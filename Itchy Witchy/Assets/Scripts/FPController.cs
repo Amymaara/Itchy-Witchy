@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class FPController : MonoBehaviour
 {
@@ -11,7 +12,15 @@ public class FPController : MonoBehaviour
     [Header("Look Settings")]
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
-    public float verticalLookLimit = 80f; //
+    public float verticalLookLimit = 80f;
+
+    [Header("Pickup Settings")]
+    public float pickupRange = 3f;
+    public Transform holdPoint;
+    private PickUpObject heldObject;
+
+    [Header("UI Elements")]
+    public TextMeshProUGUI pickupText;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -30,6 +39,25 @@ public class FPController : MonoBehaviour
     {
         HandleMovement();
         HandleLook();
+
+        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, pickupRange))
+        {
+            PickUpObject pickUpObject = hit.collider.GetComponent<PickUpObject>();
+            if (pickUpObject != null)
+            {
+                pickupText.text = "Press E to pick up " + pickUpObject.gameObject.name;
+                pickupText.gameObject.SetActive(true);
+            }
+            else
+            {
+                pickupText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            pickupText.gameObject.SetActive(false);
+        }
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -44,6 +72,31 @@ public class FPController : MonoBehaviour
         if (context.performed && controller.isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+    }
+
+    public void OnPickup(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        {
+            if (heldObject == null)
+            {
+                Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+                if (Physics.Raycast(ray, out RaycastHit hit, pickupRange))
+                {
+                    PickUpObject pickUpObject = hit.collider.GetComponent<PickUpObject>();
+                    if (pickUpObject != null)
+                    {
+                        heldObject = pickUpObject;
+                        heldObject.PickUp(holdPoint);
+                    }
+                }
+            }
+            else
+            {
+                heldObject.Drop();
+                heldObject = null;
+            }
         }
     }
     public void HandleMovement()
