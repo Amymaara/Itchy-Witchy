@@ -695,8 +695,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   gravity: -9.81
+  jumpHeight: 2
   cameraTransform: {fileID: 330585546}
-  lookSensitivity: 2
+  lookSensitivity: 0.39
   verticalLookLimit: 80
 --- !u!114 &1296638687
 MonoBehaviour:
@@ -755,6 +756,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cfcc1c25-a7d6-4006-b1ff-c43cb57759a3
     m_ActionName: 'Player/Look[/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1296638686}
+        m_TargetAssemblyTypeName: FPController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3f1d97b2-a970-4d34-8008-6472d6386197
+    m_ActionName: 'Player/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
