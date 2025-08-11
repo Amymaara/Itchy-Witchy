@@ -59,7 +59,7 @@
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeComponent.SettingsEnabled",
-                "value": "{\"m_Value\":false}"
+                "value": "{\"m_Value\":true}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -119,12 +119,27 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Cube",
-                "value": "{\"m_Value\":{\"x\":-18.645893096923829,\"y\":2.8096582889556886,\"z\":-72.17507934570313}}"
+                "value": "{\"m_Value\":{\"x\":-19.515029907226564,\"y\":10.42910385131836,\"z\":-20.09455680847168}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Plane",
                 "value": "{\"m_Value\":{\"x\":8.007057189941407,\"y\":0.0,\"z\":-3.349742889404297}}"
+            },
+            {
+                "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.LastSize.Prism",
+                "value": "{\"m_Value\":{\"x\":-106.85366821289063,\"y\":17.168697357177736,\"z\":83.99337768554688}}"
+            },
+            {
+                "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.LastSize.Cylinder",
+                "value": "{\"m_Value\":{\"x\":-16.47933578491211,\"y\":7.69866943359375,\"z\":-16.080215454101564}}"
+            },
+            {
+                "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.LastSize.Arch",
+                "value": "{\"m_Value\":{\"x\":17.657289505004884,\"y\":15.424068450927735,\"z\":-35.58408737182617}}"
             },
             {
                 "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -134,6 +149,21 @@
             {
                 "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastRotation.Plane",
+                "value": "{\"m_Value\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0}}"
+            },
+            {
+                "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.LastRotation.Prism",
+                "value": "{\"m_Value\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0}}"
+            },
+            {
+                "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.LastRotation.Cylinder",
+                "value": "{\"m_Value\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0}}"
+            },
+            {
+                "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.LastRotation.Arch",
                 "value": "{\"m_Value\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0}}"
             },
             {
@@ -147,6 +177,21 @@
                 "value": "{\"m_Value\":0}"
             },
             {
+                "type": "UnityEngine.ProBuilder.PivotLocation, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.PivotLocation.Prism",
+                "value": "{\"m_Value\":0}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.PivotLocation, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.PivotLocation.Cylinder",
+                "value": "{\"m_Value\":0}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.PivotLocation, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.PivotLocation.Arch",
+                "value": "{\"m_Value\":0}"
+            },
+            {
                 "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.Cube",
                 "value": "{}"
@@ -154,6 +199,21 @@
             {
                 "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.Plane",
+                "value": "{}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.Prism",
+                "value": "{}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.Cylinder",
+                "value": "{}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.Arch",
                 "value": "{}"
             },
             {
@@ -170,6 +230,11 @@
                 "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ExtrudeFaces.distance",
                 "value": "{\"m_Value\":0.5}"
+            },
+            {
+                "type": "UnityEditor.ProBuilder.Actions.DetachFaces+DetachSetting, Unity.ProBuilder.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "DetachFaces.target",
+                "value": "{\"m_Value\":0}"
             }
         ]
     }
