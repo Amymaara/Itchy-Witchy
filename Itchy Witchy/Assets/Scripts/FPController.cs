@@ -19,6 +19,10 @@ public class FPController : MonoBehaviour
     public Transform holdPoint;
     private PickUpObject heldObject;
 
+    [Header("Interact Settings")]
+    public float interactRange = 3f;
+    public CatInteraction catInteraction;
+
     [Header("UI Elements")]
     public TextMeshProUGUI pickupText;
 
@@ -60,7 +64,6 @@ public class FPController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
-
     public void OnPickup(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -85,6 +88,23 @@ public class FPController : MonoBehaviour
             }
         }
     }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+            {
+                CatInteraction interactable = hit.collider.GetComponent<CatInteraction>();
+                if (interactable != null)
+                {
+                    interactable.Interact();
+                }
+            }
+        }
+    }
+
     public void HandleMovement()
     {
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
