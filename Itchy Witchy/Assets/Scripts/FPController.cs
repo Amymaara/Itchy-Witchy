@@ -15,7 +15,7 @@ public class FPController : MonoBehaviour
     public float verticalLookLimit = 80f;
 
     [Header("Pickup Settings")]
-    public float pickupRange = 3f;
+    public float pickupRange = 5f;
     public Transform holdPoint;
     private PickUpObject heldObject;
 
@@ -32,7 +32,7 @@ public class FPController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
     private void Update()
@@ -40,23 +40,9 @@ public class FPController : MonoBehaviour
         HandleMovement();
         HandleLook();
 
-        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, pickupRange))
+        if (heldObject != null)
         {
-            PickUpObject pickUpObject = hit.collider.GetComponent<PickUpObject>();
-            if (pickUpObject != null)
-            {
-                pickupText.text = "Press E to pick up " + pickUpObject.gameObject.name;
-                pickupText.gameObject.SetActive(true);
-            }
-            else
-            {
-                pickupText.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            pickupText.gameObject.SetActive(false);
+            heldObject.MoveToHoldPoint(holdPoint.position);
         }
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -84,11 +70,11 @@ public class FPController : MonoBehaviour
                 Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
                 if (Physics.Raycast(ray, out RaycastHit hit, pickupRange))
                 {
-                    PickUpObject pickUpObject = hit.collider.GetComponent<PickUpObject>();
-                    if (pickUpObject != null)
+                    PickUpObject pickUp = hit.collider.GetComponent<PickUpObject>();
+                    if (pickUp != null)
                     {
-                        heldObject = pickUpObject;
-                        heldObject.PickUp(holdPoint);
+                        pickUp.PickUp(holdPoint);
+                        heldObject = pickUp;
                     }
                 }
             }
