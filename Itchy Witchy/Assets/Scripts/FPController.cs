@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class FPController : MonoBehaviour
 {
@@ -11,7 +12,19 @@ public class FPController : MonoBehaviour
     [Header("Look Settings")]
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
-    public float verticalLookLimit = 80f; //
+    public float verticalLookLimit = 80f;
+
+    [Header("Pickup Settings")]
+    public float pickupRange = 5f;
+    public Transform holdPoint;
+    private PickUpObject heldObject;
+
+    [Header("Interact Settings")]
+    public float interactRange = 3f;
+    public CatInteraction catInteraction;
+
+    [Header("UI Elements")]
+    public TextMeshProUGUI pickupText;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -23,13 +36,18 @@ public class FPController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
     private void Update()
     {
         HandleMovement();
         HandleLook();
+
+        if (heldObject != null)
+        {
+            heldObject.MoveToHoldPoint(holdPoint.position);
+        }
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -46,6 +64,47 @@ public class FPController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
+    public void OnPickup(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        {
+            if (heldObject == null)
+            {
+                Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+                if (Physics.Raycast(ray, out RaycastHit hit, pickupRange))
+                {
+                    PickUpObject pickUp = hit.collider.GetComponent<PickUpObject>();
+                    if (pickUp != null)
+                    {
+                        pickUp.PickUp(holdPoint);
+                        heldObject = pickUp;
+                    }
+                }
+            }
+            else
+            {
+                heldObject.Drop();
+                heldObject = null;
+            }
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+            {
+                CatInteraction interactable = hit.collider.GetComponent<CatInteraction>();
+                if (interactable != null)
+                {
+                    interactable.Interact();
+                }
+            }
+        }
+    }
+
     public void HandleMovement()
     {
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
