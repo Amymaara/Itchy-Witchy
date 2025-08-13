@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class RuneDraw : MonoBehaviour
 {
     // pix and Dev tut
-{
+
     [Header("References")]
     public Transform cursor;
     public Camera mainCam;
@@ -38,8 +38,8 @@ public class RuneDraw : MonoBehaviour
         if (ctx.performed)
         {
             Vector2 screenPos = ctx.ReadValue<Vector2>();
-            Vector3 worldPos = mainCam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
-            cursor.position = new Vector3(worldPos.x, worldPos.y, 0);
+            //Vector3 worldPos = mainCam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
+            cursor.position = new Vector3(screenPos.x, 0.83f, screenPos.y);
         }
     }
 
