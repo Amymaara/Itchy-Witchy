@@ -21,7 +21,7 @@ public class FPController : MonoBehaviour
 
     [Header("Interact Settings")]
     public float interactRange = 3f;
-    public CatInteraction catInteraction;
+    public Interactable catInteraction;
 
     [Header("UI Elements")]
     public TextMeshProUGUI pickupText;
@@ -96,7 +96,7 @@ public class FPController : MonoBehaviour
             Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
             {
-                CatInteraction interactable = hit.collider.GetComponent<CatInteraction>();
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {
                     interactable.Interact();
