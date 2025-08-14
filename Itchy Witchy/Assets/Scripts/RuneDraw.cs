@@ -14,20 +14,26 @@ public class RuneDraw : MonoBehaviour
     public LineRenderer playerLine;
 
     [Header("Settings")]
-    public float controllerSpeed = 5f;
+    public float controllerSpeed = 4f;
     public float pointSpacing = 0.05f;
     public float accuracyThreshold = 0.2f;
+    [Range(0f, 1f)]
+    public float deadzone = 0.1f;
+
     [SerializeField]
     private float fixedWorldY;
 
     private Vector3 previousCursorPosition;
     private Vector2 cursorMove;
     private bool isDrawing;
+    public float smoothSpeed = 10f; // Higher = snappier, lower = smoother
+    private Vector3 smoothedMove;
 
     private void Awake()
     {
         previousCursorPosition = transform.position;
         playerLine.positionCount = 0;
+        Cursor.visible = false;
 
     }
 
@@ -48,10 +54,33 @@ public class RuneDraw : MonoBehaviour
 
     public void HandlePoint()
     {
-        Vector3 screenPoint = cursorMove;
-        Vector3 worldPoint = cameraMain.ScreenToWorldPoint(new Vector3(screenPoint.x, screenPoint.y, 10f));
-        worldPoint.y = fixedWorldY;
-        cursor.transform.position = worldPoint;
+        //Vector2 screenPoint = cursorMove;
+        //Vector3 worldPoint = cameraMain.ScreenToWorldPoint(new Vector3(screenPoint.x, screenPoint.y, 10f ));
+        //worldPoint.y = fixedWorldY;
+        //cursor.transform.position = worldPoint;
+
+        //Vector2 screenPos = cursorMove;
+        //Vector3 worldPos = cameraMain.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
+        //worldPos.y = fixedWorldY;
+        //cursor.transform.position = worldPos;
+
+        Vector2 filteredInput = cursorMove;
+        if (filteredInput.magnitude < deadzone)
+            filteredInput = Vector2.zero;
+
+        Vector3 move = new Vector3(filteredInput.x, 0f, filteredInput.y) * controllerSpeed * Time.deltaTime;
+
+        // Smooth the movement vector
+        smoothedMove = Vector3.Lerp(smoothedMove, move, Time.deltaTime * smoothSpeed);
+        float maxMovePerFrame = 0.1f;
+        smoothedMove = Vector3.ClampMagnitude(smoothedMove, maxMovePerFrame);
+
+        cursor.transform.position += smoothedMove;
+
+        // Lock Y position
+        Vector3 pos = cursor.transform.position;
+        pos.y = fixedWorldY;
+        cursor.transform.position = pos;
     }
 
     //controller.Move(move * moveSpeed * Time.deltaTime);
