@@ -39,7 +39,7 @@ public class FPController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -112,7 +112,7 @@ public class FPController : MonoBehaviour
         if (moveInput != Vector2.zero)
         {
            // Debug.Log("Moving");
-            audioManager.HandleFootsteps();
+            //audioManager.HandleFootsteps();
 
         }
         if (controller.isGrounded && velocity.y < 0)
