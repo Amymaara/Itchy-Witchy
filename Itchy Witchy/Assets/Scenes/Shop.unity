@@ -21715,6 +21715,7 @@ MonoBehaviour:
   interactRange: 15.75
   catInteraction: {fileID: 0}
   pickupText: {fileID: 0}
+  audioManager: {fileID: 1368095303}
 --- !u!114 &1296638687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21878,14 +21879,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368095301}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fdff56ef434fc74693708e77029ceb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   footstepSound: {fileID: 1368095304}
   footstepClip: {fileID: 8300000, guid: c8f55293968462f43bffe97bea9a1ae7, type: 3}
-  footstepInterval: 0.5
+  footstepInterval: 0.2
   controller: {fileID: 1296638688}
 --- !u!82 &1368095304
 AudioSource:
@@ -21894,15 +21895,15 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368095301}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: c8c987cf30a5cc34fa56730a113e8998, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c8f55293968462f43bffe97bea9a1ae7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -23279,7 +23280,7 @@ Transform:
   m_GameObject: {fileID: 1832834765}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.08, y: -13.818297, z: 8.4}
+  m_LocalPosition: {x: 34.08, y: -13.818297, z: 9.66}
   m_LocalScale: {x: 7.1513543, y: 9.797283, z: 7.238116}
   m_ConstrainProportionsScale: 0
   m_Children: []
