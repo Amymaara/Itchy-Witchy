@@ -1,129 +1,91 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.InputSystem.XR;
 
 public class RuneDraw : MonoBehaviour
 {
-    // pix and Dev tut
+    public GameObject cursor;
 
-    [Header("References")]
-    public Transform cursor;
-    public Camera mainCam;
-    public LineRenderer targetPath;
-    public TMP_Text accuracyText;
+
+    private Vector2 moveInput;
+    public Camera cameraMain;
+
+    public LineRenderer targetLine;
+    public LineRenderer playerLine;
 
     [Header("Settings")]
     public float controllerSpeed = 5f;
     public float pointSpacing = 0.05f;
     public float accuracyThreshold = 0.2f;
+    [SerializeField]
+    private float fixedWorldY;
 
-    private LineRenderer playerLine;
-    private List<Vector3> points = new List<Vector3>();
+    private Vector3 previousCursorPosition;
+    private Vector2 cursorMove;
     private bool isDrawing;
-    private Vector2 moveInput;
 
     private void Awake()
     {
-        playerLine = GetComponent<LineRenderer>();
-        if (mainCam == null)
-            mainCam = Camera.main;
-    }
+        previousCursorPosition = transform.position;
+        playerLine.positionCount = 0;
 
-    // Called from Input Actions: Mouse/stick position
-    public void OnPoint(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            Vector2 screenPos = ctx.ReadValue<Vector2>();
-            //Vector3 worldPos = mainCam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
-            cursor.position = new Vector3(screenPos.x, 0.83f, screenPos.y);
-        }
-    }
-
-    // Called from Input Actions: Controller stick
-    public void OnMove(InputAction.CallbackContext ctx)
-    {
-        moveInput = ctx.ReadValue<Vector2>();
-    }
-
-    // Called from Input Actions: Draw button
-    public void OnDraw(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started)
-        {
-            StartDrawing();
-        }
-        else if (ctx.canceled)
-        {
-            StopDrawing();
-        }
     }
 
     private void Update()
     {
-        // Controller cursor movement
-        if (Gamepad.current != null && moveInput != Vector2.zero)
-        {
-            cursor.position += (Vector3)(moveInput * controllerSpeed * Time.deltaTime);
-        }
+        HandlePoint();
 
-        // If actively drawing, add points
-        if (isDrawing)
+        if (isDrawing) 
         {
-            float dist = points.Count > 0 ? Vector3.Distance(cursor.position, points[^1]) : Mathf.Infinity;
-            if (dist >= pointSpacing)
-            {
-                AddPoint(cursor.position);
-            }
+            DrawingStart();
         }
     }
 
-    private void StartDrawing()
+    public void OnPoint(InputAction.CallbackContext context)
     {
-        isDrawing = true;
-        points.Clear();
+       cursorMove = context.ReadValue<Vector2>();
+    }
+
+    public void HandlePoint()
+    {
+        Vector3 screenPoint = cursorMove;
+        Vector3 worldPoint = cameraMain.ScreenToWorldPoint(new Vector3(screenPoint.x, screenPoint.y, 10f));
+        worldPoint.y = fixedWorldY;
+        cursor.transform.position = worldPoint;
+    }
+
+    //controller.Move(move * moveSpeed * Time.deltaTime);
+
+    public void OnDrawRune(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            HandlePoint();
+            previousCursorPosition = cursor.transform.transform.position;
+            isDrawing = true;
+            DrawingStart();
+        }
+        if (context.canceled)
+        {
+            DrawingStop();
+        }
+    }
+
+    public void DrawingStart()
+    {
+        Vector3 currentCursorPosition = cursor.transform.transform.position; 
+        if (Vector3.Distance(previousCursorPosition, cursor.transform.position) > pointSpacing)
+        {
+            playerLine.positionCount++;
+            playerLine.SetPosition(playerLine.positionCount - 1, currentCursorPosition);
+            previousCursorPosition = currentCursorPosition;
+
+        }
+    }
+
+    public void DrawingStop()
+    {
         playerLine.positionCount = 0;
-        AddPoint(cursor.position);
-    }
-
-    private void StopDrawing()
-    {
         isDrawing = false;
-        float accuracy = CalculateAccuracy();
-        accuracyText.text = $"Accuracy: {accuracy:0.0}%";
-    }
-
-    private void AddPoint(Vector3 point)
-    {
-        points.Add(point);
-        playerLine.positionCount = points.Count;
-        playerLine.SetPositions(points.ToArray());
-    }
-
-    private float CalculateAccuracy()
-    {
-        if (points.Count == 0) return 0f;
-
-        Vector3[] targetPoints = new Vector3[targetPath.positionCount];
-        targetPath.GetPositions(targetPoints);
-
-        float goodPoints = 0;
-        foreach (var p in points)
-        {
-            float minDist = Mathf.Infinity;
-            foreach (var t in targetPoints)
-            {
-                float dist = Vector2.Distance(p, t);
-                if (dist < minDist) minDist = dist;
-            }
-            if (minDist <= accuracyThreshold)
-                goodPoints++;
-        }
-
-        return (goodPoints / points.Count) * 100f;
     }
 }
-

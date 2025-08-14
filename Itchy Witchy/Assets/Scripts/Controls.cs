@@ -423,6 +423,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""c3fc5549-1692-4a83-a78b-b46f06eea467"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -476,7 +485,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -487,8 +496,19 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cd5d8ce-f7c0-41ca-a4aa-6e8b10ba3970"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -537,6 +557,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Runes_DrawPath = m_Runes.FindAction("DrawPath", throwIfNotFound: true);
         m_Runes_Draw = m_Runes.FindAction("Draw", throwIfNotFound: true);
         m_Runes_Interact = m_Runes.FindAction("Interact", throwIfNotFound: true);
+        m_Runes_Move = m_Runes.FindAction("Move", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -761,6 +782,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Runes_DrawPath;
     private readonly InputAction m_Runes_Draw;
     private readonly InputAction m_Runes_Interact;
+    private readonly InputAction m_Runes_Move;
     /// <summary>
     /// Provides access to input actions defined in input action map "Runes".
     /// </summary>
@@ -784,6 +806,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Runes/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_Runes_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Runes/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Runes_Move;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -819,6 +845,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
         }
 
         /// <summary>
@@ -839,6 +868,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
         }
 
         /// <summary>
@@ -969,5 +1001,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
     }
 }
