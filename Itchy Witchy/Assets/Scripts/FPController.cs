@@ -26,6 +26,9 @@ public class FPController : MonoBehaviour
     [Header("UI Elements")]
     public TextMeshProUGUI pickupText;
 
+    [Header("Audio")]
+    public AudioManager audioManager;
+
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -57,13 +60,7 @@ public class FPController : MonoBehaviour
     {
         lookInput = context.ReadValue<Vector2>();
     }
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.performed && controller.isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-    }
+    
     public void OnPickup(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -107,9 +104,17 @@ public class FPController : MonoBehaviour
 
     public void HandleMovement()
     {
-        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+        Vector3 move = (transform.right * moveInput.x + transform.forward * moveInput.y).normalized; // normalize movement vector
+       
         controller.Move(move * moveSpeed * Time.deltaTime);
+        //Debug.Log(move);
 
+        if (moveInput != Vector2.zero)
+        {
+           // Debug.Log("Moving");
+            audioManager.HandleFootsteps();
+
+        }
         if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
