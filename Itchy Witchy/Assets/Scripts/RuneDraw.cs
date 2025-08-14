@@ -17,8 +17,8 @@ public class RuneDraw : MonoBehaviour
     public float controllerSpeed = 4f;
     public float pointSpacing = 0.05f;
     public float accuracyThreshold = 0.2f;
-    [Range(0f, 1f)]
     public float deadzone = 0.1f;
+    float maxMovePerFrame = 0.1f;
 
     [SerializeField]
     private float fixedWorldY;
@@ -26,7 +26,7 @@ public class RuneDraw : MonoBehaviour
     private Vector3 previousCursorPosition;
     private Vector2 cursorMove;
     private bool isDrawing;
-    public float smoothSpeed = 10f; // Higher = snappier, lower = smoother
+    public float smoothSpeed = 5f; // Higher = snappier, lower = smoother
     private Vector3 smoothedMove;
 
     private void Awake()
@@ -72,7 +72,7 @@ public class RuneDraw : MonoBehaviour
 
         // Smooth the movement vector
         smoothedMove = Vector3.Lerp(smoothedMove, move, Time.deltaTime * smoothSpeed);
-        float maxMovePerFrame = 0.1f;
+        
         smoothedMove = Vector3.ClampMagnitude(smoothedMove, maxMovePerFrame);
 
         cursor.transform.position += smoothedMove;
