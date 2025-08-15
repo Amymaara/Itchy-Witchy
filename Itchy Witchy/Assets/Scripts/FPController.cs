@@ -2,6 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
+// Title: First Person Controller Script
+// Author: Hayes, A
+// Date: 09/08/2025
+// Code Variation:
+// Avalability:
 public class FPController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -27,7 +32,7 @@ public class FPController : MonoBehaviour
     public TextMeshProUGUI pickupText;
 
     [Header("Audio")]
-    public AudioManager audioManager;
+    public WalkingAudio walkingSound;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -39,7 +44,7 @@ public class FPController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -112,7 +117,7 @@ public class FPController : MonoBehaviour
         if (moveInput != Vector2.zero)
         {
            // Debug.Log("Moving");
-            audioManager.HandleFootsteps();
+            //audioManager.HandleFootsteps();
 
         }
         if (controller.isGrounded && velocity.y < 0)
