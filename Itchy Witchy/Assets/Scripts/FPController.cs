@@ -2,6 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
+// Title: First Person Controller Script
+// Author: Hayes, A
+// Date: 09/08/2025
+// Code Variation:
+// Avalability:
 public class FPController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -27,7 +32,7 @@ public class FPController : MonoBehaviour
     public TextMeshProUGUI pickupText;
 
     [Header("Audio")]
-    public AudioManager audioManager;
+    public WalkingAudio walkingSound;
 
     private CharacterController controller;
     private Vector2 moveInput;
