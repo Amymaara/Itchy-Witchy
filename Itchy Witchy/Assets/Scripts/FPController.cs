@@ -86,7 +86,7 @@ public class FPController : MonoBehaviour
         }
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    /* public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -101,6 +101,7 @@ public class FPController : MonoBehaviour
             }
         }
     }
+    */
 
     public void HandleMovement()
     {

@@ -24,7 +24,7 @@ public class Interactable : MonoBehaviour
             Debug.Log($"You have left the interaction area with {ObjectName}");
         }
     }
-   /* void Update()
+    /*void Update()
     {
         if (isPlayerNear && Input.GetKeyDown(KeyCode.E))
         {
