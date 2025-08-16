@@ -10530,7 +10530,7 @@ GameObject:
   - component: {fileID: 472119332}
   - component: {fileID: 472119335}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Dialogue Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11496,8 +11496,9 @@ GameObject:
   - component: {fileID: 694285013}
   - component: {fileID: 694285016}
   - component: {fileID: 694285017}
+  - component: {fileID: 694285018}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Marker Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11511,7 +11512,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694285011}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.119}
+  m_LocalPosition: {x: 0, y: 0, z: 0.006}
   m_LocalScale: {x: 0.0095581, y: 0.0095581, z: 0.0095581}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11520,7 +11521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.65, y: 1.414}
+  m_AnchoredPosition: {x: 0.025, y: 1.13}
   m_SizeDelta: {x: 133.55096, y: 55.81131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694285013
@@ -11624,6 +11625,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &694285018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694285011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50aa4ebf96177144ca1810795e9d89ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueController: {fileID: 1669351500}
+  arrowMarker: {fileID: 694285011}
+  dialogueBox: {fileID: 1669351497}
 --- !u!1 &701335439
 GameObject:
   m_ObjectHideFlags: 0
@@ -23146,6 +23162,7 @@ GameObject:
   - component: {fileID: 1709716522}
   - component: {fileID: 1709716523}
   - component: {fileID: 1709716524}
+  - component: {fileID: 1709716525}
   m_Layer: 0
   m_Name: dropdown arrow
   m_TagString: Untagged
@@ -23245,6 +23262,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1709716525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709716521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50aa4ebf96177144ca1810795e9d89ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueController: {fileID: 1669351500}
+  arrowMarker: {fileID: 1709716521}
+  dialogueBox: {fileID: 1669351497}
 --- !u!1 &1766007707
 GameObject:
   m_ObjectHideFlags: 0
@@ -24174,8 +24206,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectCanvas: {fileID: 694285015}
-  dialogueText: {fileID: 11400000, guid: e84a3a79e69037e4da31bcf7d7911f48, type: 2}
+  marker: {fileID: 694285018}
   dialogueController: {fileID: 1669351500}
+  introDialogueText: {fileID: 11400000, guid: 88af5067b98774b4c90d81b886d9233a, type: 2}
+  incompleteDialogue: {fileID: 11400000, guid: fc6d7d0a0fc495945a082edd26d6a554, type: 2}
+  successDialogue: {fileID: 11400000, guid: e903248504ea4d042bc709685b2fc1cf, type: 2}
+  wrongMaterialsDialogue: {fileID: 11400000, guid: cae25ee513c0d914cb7a09fd355abca8, type: 2}
+  lowAccuraryDialogue: {fileID: 11400000, guid: 48bab8b0f4f8c2e42a2f9f800d830688, type: 2}
+  introShown: 0
+  currentOutcome: 0
 --- !u!1 &1885438663
 GameObject:
   m_ObjectHideFlags: 0

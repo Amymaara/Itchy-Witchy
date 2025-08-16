@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public abstract class NPC : MonoBehaviour, IInteractable
 {
     [SerializeField] private Canvas _objectCanvas;
+    [SerializeField] private HideMarker marker;
 
     private Transform _playerTransform;
 
@@ -16,21 +17,31 @@ public abstract class NPC : MonoBehaviour, IInteractable
     }
     private void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame && isWithinInteractDistance())
+
+        if (_playerTransform == null) return;
+
+        bool dialogueOpen = marker && marker.IsDialogueOpen;
+        bool inRange = Vector3.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE;
+
+        
+        if (marker)
         {
-            //interact with this npc
-            Interact();
+            if (dialogueOpen) marker.hideArrowMarker();
+            else if (inRange) marker.showArrowMarker();
+            else marker.hideArrowMarker();
         }
 
-        if (_objectCanvas.gameObject.activeSelf && !isWithinInteractDistance())
+        if (_objectCanvas)
         {
-            // turn off sprite 
-            _objectCanvas.gameObject.SetActive(false);
+            bool shouldShowPrompt = inRange && !dialogueOpen;
+            if (_objectCanvas.gameObject.activeSelf != shouldShowPrompt)
+                _objectCanvas.gameObject.SetActive(shouldShowPrompt);
         }
-        else if (!_objectCanvas.gameObject.activeSelf && isWithinInteractDistance())
+
+        
+        if (Keyboard.current.eKey.wasPressedThisFrame && (inRange || dialogueOpen))
         {
-            // turn on sprite 
-            _objectCanvas.gameObject.SetActive(true);
+            Interact();
         }
     }
 
@@ -38,13 +49,6 @@ public abstract class NPC : MonoBehaviour, IInteractable
 
     private bool isWithinInteractDistance()
     {
-        if (Vector3.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return Vector3.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE;
     }
 }
