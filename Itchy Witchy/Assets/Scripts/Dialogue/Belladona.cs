@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class Belladona : MonoBehaviour
+public class Belladona : NPC
 {
-   
+   public override void Interact()
+    {
+
+    }
 }

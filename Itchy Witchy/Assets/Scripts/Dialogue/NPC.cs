@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 public abstract class NPC : MonoBehaviour, IInteractable
 {
-    [SerializeField] private SpriteRenderer _interactSprite;
+    [SerializeField] private Canvas _objectCanvas;
 
     private Transform _playerTransform;
 
-    private const float INTERACT_DISTANCE = 5f;
+    private const float INTERACT_DISTANCE = 20f;
 
     private void Start()
     {
@@ -20,15 +20,15 @@ public abstract class NPC : MonoBehaviour, IInteractable
             //interact with this npc
         }
 
-        if (_interactSprite.gameObject.activeSelf && !isWithinInteractDistance())
+        if (_objectCanvas.gameObject.activeSelf && !isWithinInteractDistance())
         {
             // turn off sprite 
-            _interactSprite.gameObject.SetActive(false);
+            _objectCanvas.gameObject.SetActive(false);
         }
-        else if (!_interactSprite.gameObject.activeSelf && isWithinInteractDistance())
+        else if (!_objectCanvas.gameObject.activeSelf && isWithinInteractDistance())
         {
             // turn on sprite 
-            _interactSprite.gameObject.SetActive(true);
+            _objectCanvas.gameObject.SetActive(true);
         }
     }
 
