@@ -240,6 +240,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &168470857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168470858}
+  m_Layer: 0
+  m_Name: worldBorders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &168470858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168470857}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1509231, y: 0.26, z: -1.0563593}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &242320535
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,10 +517,12 @@ MonoBehaviour:
   cameraMain: {fileID: 1808006246}
   targetLine: {fileID: 2007346341}
   playerLine: {fileID: 242320536}
-  controllerSpeed: 5
-  pointSpacing: 0.05
+  controllerSpeed: 2
+  pointSpacing: 0.1
   accuracyThreshold: 0.2
+  deadzone: 0.1
   fixedWorldY: 0.83
+  smoothSpeed: 10
 --- !u!1 &379213140
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,8 +697,8 @@ Transform:
   - {fileID: 2007346340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1567565087
-BoxCollider:
+--- !u!136 &1567565087
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -682,9 +715,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Radius: 0.5222059
+  m_Height: 21.144352
+  m_Direction: 1
+  m_Center: {x: 0.000007820129, y: 0, z: 0.0064028264}
 --- !u!1 &1808006244
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,3 +1008,4 @@ SceneRoots:
   - {fileID: 1567565086}
   - {fileID: 242320537}
   - {fileID: 379213143}
+  - {fileID: 168470858}

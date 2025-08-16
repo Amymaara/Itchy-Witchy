@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
@@ -19,10 +20,10 @@ public class RuneDraw : MonoBehaviour
     public float accuracyThreshold = 0.2f;
     public float deadzone = 0.1f;
     float maxMovePerFrame = 0.1f;
-
     [SerializeField]
     private float fixedWorldY;
 
+    private Vector2 screenBoundaries;
     private Vector3 previousCursorPosition;
     private Vector2 cursorMove;
     private bool isDrawing;
@@ -34,6 +35,7 @@ public class RuneDraw : MonoBehaviour
         previousCursorPosition = transform.position;
         playerLine.positionCount = 0;
         Cursor.visible = false;
+        screenBoundaries = cameraMain.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 10f - fixedWorldY));
 
     }
 
@@ -47,23 +49,22 @@ public class RuneDraw : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        Vector3 viewPos = transform.position;
+        viewPos.x = Mathf.Clamp(viewPos.x, screenBoundaries.x, screenBoundaries.x * -1);
+        viewPos.z = Mathf.Clamp(viewPos.y, screenBoundaries.y, screenBoundaries.y * -1);
+        transform.position = viewPos;
+    }
+
     public void OnPoint(InputAction.CallbackContext context)
     {
        cursorMove = context.ReadValue<Vector2>();
     }
 
+    // adapted from pix and dev
     public void HandlePoint()
     {
-        //Vector2 screenPoint = cursorMove;
-        //Vector3 worldPoint = cameraMain.ScreenToWorldPoint(new Vector3(screenPoint.x, screenPoint.y, 10f ));
-        //worldPoint.y = fixedWorldY;
-        //cursor.transform.position = worldPoint;
-
-        //Vector2 screenPos = cursorMove;
-        //Vector3 worldPos = cameraMain.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
-        //worldPos.y = fixedWorldY;
-        //cursor.transform.position = worldPos;
-
         Vector2 filteredInput = cursorMove;
         if (filteredInput.magnitude < deadzone)
             filteredInput = Vector2.zero;
@@ -72,7 +73,6 @@ public class RuneDraw : MonoBehaviour
 
         // Smooth the movement vector
         smoothedMove = Vector3.Lerp(smoothedMove, move, Time.deltaTime * smoothSpeed);
-        
         smoothedMove = Vector3.ClampMagnitude(smoothedMove, maxMovePerFrame);
 
         cursor.transform.position += smoothedMove;
@@ -83,7 +83,6 @@ public class RuneDraw : MonoBehaviour
         cursor.transform.position = pos;
     }
 
-    //controller.Move(move * moveSpeed * Time.deltaTime);
 
     public void OnDrawRune(InputAction.CallbackContext context)
     {
