@@ -12,12 +12,14 @@ public abstract class NPC : MonoBehaviour, IInteractable
     private void Start()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
     private void Update()
     {
         if (Keyboard.current.eKey.wasPressedThisFrame && isWithinInteractDistance())
         {
             //interact with this npc
+            Interact();
         }
 
         if (_objectCanvas.gameObject.activeSelf && !isWithinInteractDistance())
@@ -36,7 +38,7 @@ public abstract class NPC : MonoBehaviour, IInteractable
 
     private bool isWithinInteractDistance()
     {
-        if (Vector2.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE)
+        if (Vector3.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE)
         {
             return true;
         }
