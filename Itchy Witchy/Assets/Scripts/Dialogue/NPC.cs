@@ -1,0 +1,54 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public abstract class NPC : MonoBehaviour, IInteractable
+{
+    [SerializeField] private Canvas _objectCanvas;
+    [SerializeField] private HideMarker marker;
+
+    private Transform _playerTransform;
+
+    private const float INTERACT_DISTANCE = 20f;
+
+    private void Start()
+    {
+        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+    }
+    private void Update()
+    {
+
+        if (_playerTransform == null) return;
+
+        bool dialogueOpen = marker && marker.IsDialogueOpen;
+        bool inRange = Vector3.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE;
+
+        
+        if (marker)
+        {
+            if (dialogueOpen) marker.hideArrowMarker();
+            else if (inRange) marker.showArrowMarker();
+            else marker.hideArrowMarker();
+        }
+
+        if (_objectCanvas)
+        {
+            bool shouldShowPrompt = inRange && !dialogueOpen;
+            if (_objectCanvas.gameObject.activeSelf != shouldShowPrompt)
+                _objectCanvas.gameObject.SetActive(shouldShowPrompt);
+        }
+
+        
+        if (Keyboard.current.eKey.wasPressedThisFrame && (inRange || dialogueOpen))
+        {
+            Interact();
+        }
+    }
+
+    public abstract void Interact();
+
+    private bool isWithinInteractDistance()
+    {
+        return Vector3.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE;
+    }
+}

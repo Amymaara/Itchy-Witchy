@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfabf07d41017a49a14383d92e103f0, type: 3}
+  m_Name: Wrong Materials Dialogue
+  m_EditorClassIdentifier: 
+  speakerName: Belladona
+  paragraphs:
+  - 'This rune is completely wrong. '
+  - Are you trying to curse me too?
+  - "I\u2019ve already got my paws full don\u2019t you think?"
+  - Try again.

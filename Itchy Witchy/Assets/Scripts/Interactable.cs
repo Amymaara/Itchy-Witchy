@@ -24,7 +24,7 @@ public class Interactable : MonoBehaviour
             Debug.Log($"You have left the interaction area with {ObjectName}");
         }
     }
-    void Update()
+    /*void Update()
     {
         if (isPlayerNear && Input.GetKeyDown(KeyCode.E))
         {
@@ -32,9 +32,11 @@ public class Interactable : MonoBehaviour
         }
     }
     // Change the Interact method from private to public
+
     public void Interact()
     {
         Debug.Log($"You are now interacting with {ObjectName}");
         // can open dialogue ui here
     }
+  */
 }
