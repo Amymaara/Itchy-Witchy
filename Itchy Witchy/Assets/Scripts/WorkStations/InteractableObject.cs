@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    public string itemID;
+    //public string itemID;
 
     public bool finishedProduct;
 
@@ -13,6 +13,7 @@ public class InteractableObject : MonoBehaviour
         Cat
     }
 
+    public Station station;
     
     
 

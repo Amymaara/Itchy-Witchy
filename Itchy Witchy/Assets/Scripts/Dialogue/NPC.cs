@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public abstract class NPC : MonoBehaviour, IInteractable
 {
@@ -7,6 +8,8 @@ public abstract class NPC : MonoBehaviour, IInteractable
     [SerializeField] private HideMarker marker;
 
     private Transform _playerTransform;
+
+    [SerializeField] private UnityEvent onInteract;
 
     private const float INTERACT_DISTANCE = 20f;
 
@@ -47,8 +50,15 @@ public abstract class NPC : MonoBehaviour, IInteractable
 
     public abstract void Interact();
 
+    //UnityEvent IInteractable.onInteract 
+    //{ get => onInteract; 
+     //set => onInteract = value; }
+
     private bool isWithinInteractDistance()
     {
         return Vector3.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE;
     }
+
+   
+    
 }
