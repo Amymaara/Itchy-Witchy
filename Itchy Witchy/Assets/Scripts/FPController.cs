@@ -2,6 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
+// Title: First Person Controller Script
+// Author: Hayes, A
+// Date: 09/08/2025
+// Code Variation:
+// Avalability:
 public class FPController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -21,10 +26,13 @@ public class FPController : MonoBehaviour
 
     [Header("Interact Settings")]
     public float interactRange = 3f;
-    public CatInteraction catInteraction;
+    public Interactable catInteraction;
 
     [Header("UI Elements")]
     public TextMeshProUGUI pickupText;
+
+    [Header("Audio")]
+    public WalkingAudio walkingSound;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -36,7 +44,7 @@ public class FPController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -57,13 +65,7 @@ public class FPController : MonoBehaviour
     {
         lookInput = context.ReadValue<Vector2>();
     }
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.performed && controller.isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-    }
+    
     public void OnPickup(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -89,14 +91,14 @@ public class FPController : MonoBehaviour
         }
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    /* public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
             {
-                CatInteraction interactable = hit.collider.GetComponent<CatInteraction>();
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                 {
                     interactable.Interact();
@@ -104,12 +106,21 @@ public class FPController : MonoBehaviour
             }
         }
     }
+    */
 
     public void HandleMovement()
     {
-        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+        Vector3 move = (transform.right * moveInput.x + transform.forward * moveInput.y).normalized; // normalize movement vector
+       
         controller.Move(move * moveSpeed * Time.deltaTime);
+        //Debug.Log(move);
 
+        if (moveInput != Vector2.zero)
+        {
+           // Debug.Log("Moving");
+            //audioManager.HandleFootsteps();
+
+        }
         if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;

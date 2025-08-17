@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfabf07d41017a49a14383d92e103f0, type: 3}
+  m_Name: Tutorial Dialgue Script
+  m_EditorClassIdentifier: 
+  speakerName: Belladona
+  paragraphs:
+  - "So you\u2019re the new witch in town?"
+  - "Not sure what I expected\u2026"
+  - "It\u2019s very rare we see new living beings here in Limbo"
+  - "Well, maybe it\u2019s not the worst thing to have some new company"
+  - " \u2026 as long as you don\u2019t try curse me like that guy from the apothecary
+    across from us "
+  - "If only I still had access to all my magic, I could turn myself back so easily\u2026"
+  - Anyways,
+  - "Since I can\u2019t run the store anymore, I shall take you in as my new apprentice. "
+  - 'You will be helping shadow spirits with their requests before they can fully
+    move on to the afterlife. '
+  - I need to see your skills before I let you interact with customers.
+  - I have a reputation to uphold after all.
+  - Try making a protection rune.
+  - 'To make a rune you need to bring the correct material to the carving station. '
+  - 'From there you must select the right stamp and carve it out carefully. '
+  - 'Check the bookshelf for my old spell book. '
+  - 'It should have all the instructions on how to make a protection rune in there. '
+  - 'Bring the rune to me for inspection once you are done. '
+  - 'I would do it myself, but these paws make everything a lot more difficult. '
