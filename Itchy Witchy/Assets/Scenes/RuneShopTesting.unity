@@ -17150,10 +17150,9 @@ GameObject:
   - component: {fileID: 1206791362}
   - component: {fileID: 1206791361}
   - component: {fileID: 1206791366}
-  - component: {fileID: 1206791367}
   m_Layer: 0
   m_Name: Book
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17271,7 +17270,8 @@ Transform:
   m_LocalPosition: {x: 36.66, y: -7.09, z: -43.64}
   m_LocalScale: {x: 2.3878186, y: 0.66637653, z: 4.070261}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1373633783}
   m_Father: {fileID: 786798884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1206791366
@@ -17286,20 +17286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4955dc183024d714a900e50f81a40c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1206791367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206791360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e25a6df85f854764b8901d1650102b5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectName: Book
-  InteractionMessage: Press E to interact with this book.
 --- !u!1 &1258661837
 GameObject:
   m_ObjectHideFlags: 0
@@ -22322,6 +22308,7 @@ GameObject:
   - component: {fileID: 1296638683}
   - component: {fileID: 1296638682}
   - component: {fileID: 1296638688}
+  - component: {fileID: 1296638691}
   - component: {fileID: 1296638687}
   - component: {fileID: 1296638686}
   - component: {fileID: 1296638690}
@@ -22446,7 +22433,7 @@ MonoBehaviour:
   pickupRange: 18.8
   holdPoint: {fileID: 1650413813}
   interactRange: 15.75
-  catInteraction: {fileID: 0}
+  catInteraction: {fileID: 1832834770}
   pickupText: {fileID: 0}
   walkingSound: {fileID: 0}
 --- !u!114 &1296638687
@@ -22542,6 +22529,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6d864cc5-b894-4809-9a57-d2179b879412
     m_ActionName: 'UI/Exit[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3d64b50-e97f-4c1b-bf8e-3da3ab795bca
+    m_ActionName: 'Runes/DrawPath[/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c224daf5-e30c-4c1a-90c6-b3c79e0d75fb
+    m_ActionName: 'Runes/Draw[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dc873080-3a01-4b6c-a837-7187658c1388
+    m_ActionName: 'Runes/Interact[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c3fc5549-1692-4a83-a78b-b46f06eea467
+    m_ActionName: Runes/Move
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -22682,6 +22685,89 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1296638691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296638681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03abb2af7dfb8454a9ed7bbff2d9e6d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!1 &1373633782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373633783}
+  - component: {fileID: 1373633785}
+  - component: {fileID: 1373633784}
+  m_Layer: 0
+  m_Name: Proximity check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1373633783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373633782}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1206791365}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1373633784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373633782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25a6df85f854764b8901d1650102b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Book
+  InteractionMessage: Press E to interact with this book.
+--- !u!65 &1373633785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373633782}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6, y: 50, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1434492832
 GameObject:
   m_ObjectHideFlags: 0
@@ -23061,7 +23147,7 @@ GameObject:
   - component: {fileID: 1602689949}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23964,9 +24050,9 @@ GameObject:
   - component: {fileID: 1788987466}
   - component: {fileID: 1788987465}
   - component: {fileID: 1788987464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: window wall left
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24441,6 +24527,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectCanvas: {fileID: 694285015}
   marker: {fileID: 694285018}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
   dialogueController: {fileID: 1669351500}
   introDialogueText: {fileID: 11400000, guid: 88af5067b98774b4c90d81b886d9233a, type: 2}
   incompleteDialogue: {fileID: 11400000, guid: fc6d7d0a0fc495945a082edd26d6a554, type: 2}
