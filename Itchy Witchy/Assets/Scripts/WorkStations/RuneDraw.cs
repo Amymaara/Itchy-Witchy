@@ -17,6 +17,8 @@ public class RuneDraw : MonoBehaviour
     public LineRenderer playerLine;
     public GameObject playerLineGameObject;
     public GameObject stampset;
+    public InputManager inputManager;
+    
 
     [Header("Settings")]
     public float controllerSpeed = 4f;
@@ -151,7 +153,9 @@ public class RuneDraw : MonoBehaviour
         //playerLine.positionCount = 0;
         cursor.SetActive(false);
         targetLineGameObject.SetActive(false);
+        inputManager.SwitchToGameplay();
         playerLineGameObject.SetActive(false); // the object this script is on
+        
 
     }
 

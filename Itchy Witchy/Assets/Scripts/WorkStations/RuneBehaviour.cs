@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RuneBehaviour : MonoBehaviour
 {
@@ -7,10 +8,12 @@ public class RuneBehaviour : MonoBehaviour
     public GameObject square;
     public GameObject triangle;
     public GameObject canvas;
+    public GameObject firstButton;
 
     [Header("Player Movement")]
     public GameObject cursor;
     public GameObject playerLine;
+    public InputManager inputManager;
 
     [Header("Runes")]
     public RuneInteractables inputProduct;
@@ -19,21 +22,28 @@ public class RuneBehaviour : MonoBehaviour
     public Material bone;
     public Material stone;
 
-    public void OnRuneTableInteract()
+    
+
+   
+    public void OnRuneTableInteract(RuneInteractables input)
     {
-        if (inputProduct != null)
+        inputManager.SwitchToRuneDrawing();
+        EventSystem.current.SetSelectedGameObject(firstButton);
+        canvas.SetActive(true);
+        if (input != null)
         { 
-            if (inputProduct.material == RuneInteractables.RuneMaterial.Wood)
+            inputProduct = input;
+            if (input.material == RuneInteractables.RuneMaterial.Wood)
             {
-                inputProduct.gameObject.GetComponent<Renderer>().material = wood;
+                input.gameObject.GetComponent<Renderer>().material = wood;
             }
-            else if (inputProduct.material == RuneInteractables.RuneMaterial.Stone)
+            else if (input.material == RuneInteractables.RuneMaterial.Stone)
             {
-                inputProduct.gameObject.GetComponent<Renderer>().material = stone;
+                input.gameObject.GetComponent<Renderer>().material = stone;
             }
-            else if (inputProduct.material == RuneInteractables.RuneMaterial.Bone)
+            else if (input.material == RuneInteractables.RuneMaterial.Bone)
             {
-                inputProduct.gameObject.GetComponent<Renderer>().material = bone;
+                input.gameObject.GetComponent<Renderer>().material = bone;
             }
         }
     }
