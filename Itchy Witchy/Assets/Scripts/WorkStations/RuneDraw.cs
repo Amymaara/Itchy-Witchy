@@ -187,9 +187,18 @@ public class RuneDraw : MonoBehaviour
 
     public void Outcome()
     {
+        if (workstation.playerRune.material != RuneInteractables.RuneMaterial.Stone && 
+            workstation.playerRune.stamp != RuneInteractables.Stamp.Star)
+        {
+            cat.SetOutcome(RuneOutcome.WrongMaterials);
+        }
         if (workstation.playerRune.skillAcurracy < 0.60f)
         {
             cat.SetOutcome(RuneOutcome.LowAccuracy);
+        }
+        else 
+        {
+            cat.SetOutcome(RuneOutcome.Success);
         }
     }
 
