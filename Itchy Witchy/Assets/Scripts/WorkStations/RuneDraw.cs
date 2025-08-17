@@ -18,6 +18,7 @@ public class RuneDraw : MonoBehaviour
     public GameObject playerLineGameObject;
     public GameObject stampset;
     public InputManager inputManager;
+    public RuneWorkstation workstation;
     
 
     [Header("Settings")]
@@ -162,10 +163,12 @@ public class RuneDraw : MonoBehaviour
         isDrawing = false;
         float playerAccuracy = CalculateAccuracy(targetLine, playerLine, pointSpacing, accuracyThreshold);
         Debug.Log(playerAccuracy);
-        //playerLine.positionCount = 0;
+        workstation.playerRune.skillAcurracy = playerAccuracy;
+        playerLine.positionCount = 0;
         cursor.SetActive(false);
         targetLineGameObject.SetActive(false);
         inputManager.SwitchToGameplay();
+        workstation.playerRune.finishedProduct = true;
         playerLineGameObject.SetActive(false); // the object this script is on
         
 

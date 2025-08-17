@@ -5,6 +5,7 @@ public class RuneWorkstation : MonoBehaviour, IInteractable
 {
     public GameObject heldObject;
     public RuneBehaviour runeBehavior;
+    public RuneInteractables playerRune;
     
 
     public void Interact()
@@ -23,7 +24,7 @@ public class RuneWorkstation : MonoBehaviour, IInteractable
             {
                 if (rune.finishedProduct == false)
                 {
-                    RuneInteractables playerRune = rune;
+                    playerRune = rune;
                     runeBehavior.OnRuneTableInteract(playerRune);
                     Debug.Log("Interacting with Ruin Table");
                 }

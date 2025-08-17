@@ -17,7 +17,9 @@ public class RuneBehaviour : MonoBehaviour
 
     [Header("Runes")]
     public RuneInteractables inputProduct;
+    public GameObject runeOnTable;
     public RuneInteractables outputProduct;
+    public RuneWorkstation workstation;
     public Material wood;
     public Material bone;
     public Material stone;
@@ -27,25 +29,27 @@ public class RuneBehaviour : MonoBehaviour
    
     public void OnRuneTableInteract(RuneInteractables input)
     {
-        inputManager.SwitchToRuneDrawing();
-        EventSystem.current.SetSelectedGameObject(firstButton);
-        canvas.SetActive(true);
+        
         if (input != null)
         { 
             inputProduct = input;
             if (input.material == RuneInteractables.RuneMaterial.Wood)
             {
-                input.gameObject.GetComponent<Renderer>().material = wood;
+                runeOnTable.gameObject.GetComponent<Renderer>().material = wood;
             }
             else if (input.material == RuneInteractables.RuneMaterial.Stone)
             {
-                input.gameObject.GetComponent<Renderer>().material = stone;
+                runeOnTable.gameObject.GetComponent<Renderer>().material = stone;
             }
             else if (input.material == RuneInteractables.RuneMaterial.Bone)
             {
-                input.gameObject.GetComponent<Renderer>().material = bone;
+                runeOnTable.gameObject.GetComponent<Renderer>().material = bone;
             }
         }
+
+        inputManager.SwitchToRuneDrawing();
+        EventSystem.current.SetSelectedGameObject(firstButton);
+        canvas.SetActive(true);
     }
 
     public void OnStarButton()
@@ -54,6 +58,7 @@ public class RuneBehaviour : MonoBehaviour
         cursor.SetActive(true);
         playerLine.SetActive(true);
         canvas.SetActive(false);
+        workstation.playerRune.stamp = RuneInteractables.Stamp.Star;
     }
 
     public void OnSquareButton() 
@@ -62,6 +67,7 @@ public class RuneBehaviour : MonoBehaviour
         cursor.SetActive(true);
         playerLine.SetActive(true);
         canvas.SetActive(false);
+        workstation.playerRune.stamp = RuneInteractables.Stamp.Square;
     }
 
     public void OnTriangleButton() 
@@ -70,6 +76,7 @@ public class RuneBehaviour : MonoBehaviour
         cursor.SetActive(true);
         playerLine.SetActive(true);
         canvas.SetActive(false);
+        workstation.playerRune.stamp = RuneInteractables.Stamp.Triangle;
     }
 
 
