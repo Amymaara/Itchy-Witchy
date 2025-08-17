@@ -22221,6 +22221,8 @@ GameObject:
   - component: {fileID: 1296638688}
   - component: {fileID: 1296638687}
   - component: {fileID: 1296638686}
+  - component: {fileID: 1296638690}
+  - component: {fileID: 1296638689}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -22318,7 +22320,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
-  - {fileID: 1368095302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1296638686
@@ -22344,7 +22345,7 @@ MonoBehaviour:
   interactRange: 15.75
   catInteraction: {fileID: 0}
   pickupText: {fileID: 0}
-  audioManager: {fileID: 1368095303}
+  walkingSound: {fileID: 0}
 --- !u!114 &1296638687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22468,71 +22469,35 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1368095301
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1368095302}
-  - component: {fileID: 1368095304}
-  - component: {fileID: 1368095303}
-  m_Layer: 0
-  m_Name: Footsteps
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1368095302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368095301}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.95019144, y: -0.68506366, z: 0.14228371}
-  m_LocalScale: {x: 0.076453626, y: 0.076453626, z: 0.076453626}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1296638685}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1368095303
+--- !u!114 &1296638689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368095301}
+  m_GameObject: {fileID: 1296638681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fdff56ef434fc74693708e77029ceb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 443519b88a50b9b47aa1677287406d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepSound: {fileID: 1368095304}
-  footstepClip: {fileID: 8300000, guid: c8f55293968462f43bffe97bea9a1ae7, type: 3}
-  footstepInterval: 0.2
-  controller: {fileID: 1296638688}
---- !u!82 &1368095304
+  walkingSound: {fileID: 1296638690}
+--- !u!82 &1296638690
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368095301}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1296638681}
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c8f55293968462f43bffe97bea9a1ae7, type: 3}
-  m_PlayOnAwake: 0
+  m_Resource: {fileID: 8300000, guid: 2e1cf937cb7442a4499d786290f0154b, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
