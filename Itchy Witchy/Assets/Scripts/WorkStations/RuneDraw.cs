@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.EventSystems;
 
 public class RuneDraw : MonoBehaviour
 {
@@ -19,7 +20,11 @@ public class RuneDraw : MonoBehaviour
     public GameObject stampset;
     public InputManager inputManager;
     public RuneWorkstation workstation;
+    public Belladona cat;
+    public GameObject firstButton;
     
+
+
 
     [Header("Settings")]
     public float controllerSpeed = 4f;
@@ -35,6 +40,7 @@ public class RuneDraw : MonoBehaviour
     public float smoothSpeed = 5f; 
     private Vector3 smoothedMove;
     public float runeRadius = 5f;
+    public bool canDraw;
 
     private void Start()
     {
@@ -47,14 +53,7 @@ public class RuneDraw : MonoBehaviour
                 fixedWorldY,
                 playerLineGameObject.transform.position.z);
 
-        foreach (LineRenderer stamp in stampset.GetComponentsInChildren<LineRenderer>())
-        {
-            if (stamp == enabled) 
-            {
-                targetLine = stamp;
-                targetLineGameObject = stamp.gameObject;
-            }
-        }
+      
 
 
     }
@@ -64,6 +63,7 @@ public class RuneDraw : MonoBehaviour
         targetLine = stampset.transform.GetChild(index).GetComponent<LineRenderer>();
         targetLineGameObject = targetLine.gameObject;
         targetLineGameObject.SetActive(true);
+        
     }
 
     private void Update()
@@ -132,6 +132,16 @@ public class RuneDraw : MonoBehaviour
 
     public void OnDrawRune(InputAction.CallbackContext context)
     {
+        //if (targetLine == null)
+        //{
+        //    EventSystem.current.SetSelectedGameObject(firstButton);
+        //    return;
+        //}
+        if (!canDraw) 
+        {
+            EventSystem.current.SetSelectedGameObject(firstButton);
+            return;
+        } 
         if (context.started)
         {
             HandlePoint();
@@ -169,9 +179,18 @@ public class RuneDraw : MonoBehaviour
         targetLineGameObject.SetActive(false);
         inputManager.SwitchToGameplay();
         workstation.playerRune.finishedProduct = true;
+        Outcome();
         playerLineGameObject.SetActive(false); // the object this script is on
         
 
+    }
+
+    public void Outcome()
+    {
+        if (workstation.playerRune.skillAcurracy < 0.60f)
+        {
+            cat.SetOutcome(RuneOutcome.LowAccuracy);
+        }
     }
 
     List<Vector3> GetDensifiedPath(LineRenderer line, float spacing)

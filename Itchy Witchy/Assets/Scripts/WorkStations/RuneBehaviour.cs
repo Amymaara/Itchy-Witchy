@@ -14,6 +14,7 @@ public class RuneBehaviour : MonoBehaviour
     public GameObject cursor;
     public GameObject playerLine;
     public InputManager inputManager;
+    public RuneDraw drawing;
 
     [Header("Runes")]
     public RuneInteractables inputProduct;
@@ -47,6 +48,7 @@ public class RuneBehaviour : MonoBehaviour
             }
         }
 
+        drawing.canDraw = false;
         inputManager.SwitchToRuneDrawing();
         EventSystem.current.SetSelectedGameObject(firstButton);
         canvas.SetActive(true);
@@ -59,6 +61,7 @@ public class RuneBehaviour : MonoBehaviour
         playerLine.SetActive(true);
         canvas.SetActive(false);
         workstation.playerRune.stamp = RuneInteractables.Stamp.Star;
+        drawing.canDraw = true;
     }
 
     public void OnSquareButton() 
@@ -68,6 +71,7 @@ public class RuneBehaviour : MonoBehaviour
         playerLine.SetActive(true);
         canvas.SetActive(false);
         workstation.playerRune.stamp = RuneInteractables.Stamp.Square;
+        drawing.canDraw = true;
     }
 
     public void OnTriangleButton() 
@@ -77,6 +81,7 @@ public class RuneBehaviour : MonoBehaviour
         playerLine.SetActive(true);
         canvas.SetActive(false);
         workstation.playerRune.stamp = RuneInteractables.Stamp.Triangle;
+        drawing.canDraw = true;
     }
 
 
