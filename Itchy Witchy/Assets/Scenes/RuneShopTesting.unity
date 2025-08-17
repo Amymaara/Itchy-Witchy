@@ -24402,7 +24402,7 @@ GameObject:
   - component: {fileID: 1832834766}
   - component: {fileID: 1832834770}
   - component: {fileID: 1832834771}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat
   m_TagString: Interact
   m_Icon: {fileID: 0}
@@ -24506,7 +24506,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832834765}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e25a6df85f854764b8901d1650102b5a, type: 3}
   m_Name: 
@@ -24529,7 +24529,19 @@ MonoBehaviour:
   marker: {fileID: 694285018}
   onInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1832834771}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dialogueController: {fileID: 1669351500}
   introDialogueText: {fileID: 11400000, guid: 88af5067b98774b4c90d81b886d9233a, type: 2}
   incompleteDialogue: {fileID: 11400000, guid: fc6d7d0a0fc495945a082edd26d6a554, type: 2}
