@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RuneBehaviour : MonoBehaviour
 {
@@ -7,35 +8,48 @@ public class RuneBehaviour : MonoBehaviour
     public GameObject square;
     public GameObject triangle;
     public GameObject canvas;
+    public GameObject firstButton;
 
     [Header("Player Movement")]
     public GameObject cursor;
     public GameObject playerLine;
+    public InputManager inputManager;
 
     [Header("Runes")]
     public RuneInteractables inputProduct;
+    public GameObject runeOnTable;
     public RuneInteractables outputProduct;
+    public RuneWorkstation workstation;
     public Material wood;
     public Material bone;
     public Material stone;
 
-    public void OnRuneTableInteract()
+    
+
+   
+    public void OnRuneTableInteract(RuneInteractables input)
     {
-        if (inputProduct != null)
+        
+        if (input != null)
         { 
-            if (inputProduct.material == RuneInteractables.RuneMaterial.Wood)
+            inputProduct = input;
+            if (input.material == RuneInteractables.RuneMaterial.Wood)
             {
-                inputProduct.gameObject.GetComponent<Renderer>().material = wood;
+                runeOnTable.gameObject.GetComponent<Renderer>().material = wood;
             }
-            else if (inputProduct.material == RuneInteractables.RuneMaterial.Stone)
+            else if (input.material == RuneInteractables.RuneMaterial.Stone)
             {
-                inputProduct.gameObject.GetComponent<Renderer>().material = stone;
+                runeOnTable.gameObject.GetComponent<Renderer>().material = stone;
             }
-            else if (inputProduct.material == RuneInteractables.RuneMaterial.Bone)
+            else if (input.material == RuneInteractables.RuneMaterial.Bone)
             {
-                inputProduct.gameObject.GetComponent<Renderer>().material = bone;
+                runeOnTable.gameObject.GetComponent<Renderer>().material = bone;
             }
         }
+
+        inputManager.SwitchToRuneDrawing();
+        EventSystem.current.SetSelectedGameObject(firstButton);
+        canvas.SetActive(true);
     }
 
     public void OnStarButton()
@@ -44,6 +58,7 @@ public class RuneBehaviour : MonoBehaviour
         cursor.SetActive(true);
         playerLine.SetActive(true);
         canvas.SetActive(false);
+        workstation.playerRune.stamp = RuneInteractables.Stamp.Star;
     }
 
     public void OnSquareButton() 
@@ -52,6 +67,7 @@ public class RuneBehaviour : MonoBehaviour
         cursor.SetActive(true);
         playerLine.SetActive(true);
         canvas.SetActive(false);
+        workstation.playerRune.stamp = RuneInteractables.Stamp.Square;
     }
 
     public void OnTriangleButton() 
@@ -60,6 +76,7 @@ public class RuneBehaviour : MonoBehaviour
         cursor.SetActive(true);
         playerLine.SetActive(true);
         canvas.SetActive(false);
+        workstation.playerRune.stamp = RuneInteractables.Stamp.Triangle;
     }
 
 

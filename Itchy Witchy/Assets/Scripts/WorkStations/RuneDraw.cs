@@ -17,6 +17,9 @@ public class RuneDraw : MonoBehaviour
     public LineRenderer playerLine;
     public GameObject playerLineGameObject;
     public GameObject stampset;
+    public InputManager inputManager;
+    public RuneWorkstation workstation;
+    
 
     [Header("Settings")]
     public float controllerSpeed = 4f;
@@ -37,7 +40,12 @@ public class RuneDraw : MonoBehaviour
     {
         previousCursorPosition = transform.position;
         playerLine.positionCount = 0;
+        fixedWorldY = runeCenter.position.y;
         Cursor.visible = false;
+        playerLineGameObject.transform.position = new Vector3(
+                playerLineGameObject.transform.position.x,
+                fixedWorldY,
+                playerLineGameObject.transform.position.z);
 
         foreach (LineRenderer stamp in stampset.GetComponentsInChildren<LineRenderer>())
         {
@@ -49,6 +57,13 @@ public class RuneDraw : MonoBehaviour
         }
 
 
+    }
+
+    public void ChooseTargetPath(int index)
+    {
+        targetLine = stampset.transform.GetChild(index).GetComponent<LineRenderer>();
+        targetLineGameObject = targetLine.gameObject;
+        targetLineGameObject.SetActive(true);
     }
 
     private void Update()
@@ -148,10 +163,14 @@ public class RuneDraw : MonoBehaviour
         isDrawing = false;
         float playerAccuracy = CalculateAccuracy(targetLine, playerLine, pointSpacing, accuracyThreshold);
         Debug.Log(playerAccuracy);
-        //playerLine.positionCount = 0;
+        workstation.playerRune.skillAcurracy = playerAccuracy;
+        playerLine.positionCount = 0;
         cursor.SetActive(false);
         targetLineGameObject.SetActive(false);
+        inputManager.SwitchToGameplay();
+        workstation.playerRune.finishedProduct = true;
         playerLineGameObject.SetActive(false); // the object this script is on
+        
 
     }
 
@@ -183,16 +202,17 @@ public class RuneDraw : MonoBehaviour
 
         for (int i = 0; i < denseTarget.Count; i++)
         {
-            Vector3 targetPoint = denseTarget[i];
-            targetPoint.y = fixedWorldY; // ensure same plane
+            // Convert target point from local to world space
+            Vector3 targetPointWorld = target.transform.TransformPoint(denseTarget[i]);
+            targetPointWorld.y = fixedWorldY;
 
             bool covered = false;
             for (int j = 0; j < player.positionCount; j++)
             {
                 Vector3 playerPoint = player.GetPosition(j);
-                playerPoint.y = fixedWorldY; // ensure same plane
+                playerPoint.y = fixedWorldY;
 
-                if (Vector3.Distance(targetPoint, playerPoint) <= threshold)
+                if (Vector3.Distance(targetPointWorld, playerPoint) <= threshold)
                 {
                     covered = true;
                     break;
@@ -205,4 +225,4 @@ public class RuneDraw : MonoBehaviour
         return (float)coveredPoints / denseTarget.Count;
     }
 
-}
+    }
