@@ -37,12 +37,6 @@ public abstract class NPC : MonoBehaviour, IInteractable
             if (_objectCanvas.gameObject.activeSelf != shouldShowPrompt)
                 _objectCanvas.gameObject.SetActive(shouldShowPrompt);
         }
-
-        
-        if (Keyboard.current.eKey.wasPressedThisFrame && (inRange || dialogueOpen))
-        {
-            Interact();
-        }
     }
 
     public abstract void Interact();

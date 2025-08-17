@@ -24,15 +24,18 @@ public class FPController : MonoBehaviour
     public Transform holdPoint;
     private PickUpObject heldObject;
 
-    [Header("Interact Settings")]
-    public float interactRange = 3f;
-    public Interactable catInteraction;
-
     [Header("UI Elements")]
     public TextMeshProUGUI pickupText;
 
     [Header("Audio")]
     public WalkingAudio walkingSound;
+
+    [Header("Interaction")]
+    [SerializeField] private float interactRange = 20f;
+
+    [Header("Dialogue")]
+    [SerializeField] private DialogueController dialogueController;
+    [SerializeField] private DialogueText dialogueText;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -91,22 +94,24 @@ public class FPController : MonoBehaviour
         }
     }
 
-    /* public void OnInteract(InputAction.CallbackContext context)
+    public void OnInteract(InputAction.CallbackContext ctx)
     {
-        if (context.performed)
+        if (!ctx.performed) return;
+
+        if (dialogueController && dialogueController.gameObject.activeInHierarchy)
         {
-            Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
-            if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
-            {
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
-                if (interactable != null)
-                {
-                    interactable.Interact();
-                }
-            }
+            dialogueController.DisplayNextParagraph(dialogueText);
+            return;
+        }
+        
+        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+        {
+            var interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null) interactable.Interact();
         }
     }
-    */
+
 
     public void HandleMovement()
     {

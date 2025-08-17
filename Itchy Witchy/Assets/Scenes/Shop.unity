@@ -22444,10 +22444,11 @@ MonoBehaviour:
   verticalLookLimit: 80
   pickupRange: 18.8
   holdPoint: {fileID: 1650413813}
-  interactRange: 15.75
-  catInteraction: {fileID: 0}
   pickupText: {fileID: 0}
   walkingSound: {fileID: 0}
+  interactRange: 15.75
+  dialogueController: {fileID: 1669351500}
+  dialogueText: {fileID: 11400000, guid: 88af5067b98774b4c90d81b886d9233a, type: 2}
 --- !u!114 &1296638687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22541,6 +22542,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6d864cc5-b894-4809-9a57-d2179b879412
     m_ActionName: 'UI/Exit[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3d64b50-e97f-4c1b-bf8e-3da3ab795bca
+    m_ActionName: 'Runes/DrawPath[/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c224daf5-e30c-4c1a-90c6-b3c79e0d75fb
+    m_ActionName: 'Runes/Draw[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dc873080-3a01-4b6c-a837-7187658c1388
+    m_ActionName: 'Runes/Interact[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c3fc5549-1692-4a83-a78b-b46f06eea467
+    m_ActionName: Runes/Move
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
