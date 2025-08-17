@@ -330,7 +330,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""30093a3d-e9c8-437a-954d-0e6520596148"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -352,11 +352,132 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a1e15a71-0910-45ad-874b-41e5b2c7bb89"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Runes"",
+            ""id"": ""54f1c33d-95bd-42cf-b6b6-4e2f94fc0fec"",
+            ""actions"": [
+                {
+                    ""name"": ""DrawPath"",
+                    ""type"": ""Value"",
+                    ""id"": ""b3d64b50-e97f-4c1b-bf8e-3da3ab795bca"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Draw"",
+                    ""type"": ""Button"",
+                    ""id"": ""c224daf5-e30c-4c1a-90c6-b3c79e0d75fb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""dc873080-3a01-4b6c-a837-7187658c1388"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""c3fc5549-1692-4a83-a78b-b46f06eea467"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""30b8faa0-7bab-4cc2-a3f0-752c13c1946f"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""DrawPath"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e29148d6-e149-4cbb-bd69-0a9adb6022f3"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""DrawPath"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a594d57-4db2-4a11-8a91-8152b92398b2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Draw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c01d9eb-7bbc-4565-ba13-9246cfce7345"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Draw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08c66415-2b68-4ff2-bad8-f7ddfa61f3fe"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0807eaa4-6100-4cc8-9207-c9892f51df78"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cd5d8ce-f7c0-41ca-a4aa-6e8b10ba3970"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -438,15 +559,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_PickUp = m_Player.FindAction("Pick Up", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+
+        // Runes
+        m_Runes = asset.FindActionMap("Runes", throwIfNotFound: true);
+        m_Runes_DrawPath = m_Runes.FindAction("DrawPath", throwIfNotFound: true);
+        m_Runes_Draw = m_Runes.FindAction("Draw", throwIfNotFound: true);
+        m_Runes_Interact = m_Runes.FindAction("Interact", throwIfNotFound: true);
+        m_Runes_Move = m_Runes.FindAction("Move", throwIfNotFound: true);
+
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Exit = m_UI.FindAction("Exit", throwIfNotFound: true);
+
     }
 
     ~@Controls()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, Controls.Player.Disable() has not been called.");
+
+        UnityEngine.Debug.Assert(!m_Runes.enabled, "This will cause a leak and performance issues, Controls.Runes.Disable() has not been called.");
+
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, Controls.UI.Disable() has not been called.");
+
     }
 
     /// <summary>
@@ -648,6 +782,19 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     /// </summary>
     public PlayerActions @Player => new PlayerActions(this);
 
+
+    // Runes
+    private readonly InputActionMap m_Runes;
+    private List<IRunesActions> m_RunesActionsCallbackInterfaces = new List<IRunesActions>();
+    private readonly InputAction m_Runes_DrawPath;
+    private readonly InputAction m_Runes_Draw;
+    private readonly InputAction m_Runes_Interact;
+    private readonly InputAction m_Runes_Move;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Runes".
+    /// </summary>
+    public struct RunesActions
+
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
@@ -656,12 +803,36 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
     public struct UIActions
+
     {
         private @Controls m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
+
+        public RunesActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Runes/DrawPath".
+        /// </summary>
+        public InputAction @DrawPath => m_Wrapper.m_Runes_DrawPath;
+        /// <summary>
+        /// Provides access to the underlying input action "Runes/Draw".
+        /// </summary>
+        public InputAction @Draw => m_Wrapper.m_Runes_Draw;
+        /// <summary>
+        /// Provides access to the underlying input action "Runes/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Runes_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Runes/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Runes_Move;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Runes; }
+
         public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
         /// <summary>
         /// Provides access to the underlying input action "UI/Exit".
@@ -671,6 +842,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_UI; }
+
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -678,9 +850,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
+
+        /// Implicitly converts an <see ref="RunesActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(RunesActions set) { return set.Get(); }
+
         /// Implicitly converts an <see ref="UIActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
         public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -688,6 +866,25 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
+
+        /// <seealso cref="RunesActions" />
+        public void AddCallbacks(IRunesActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RunesActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RunesActionsCallbackInterfaces.Add(instance);
+            @DrawPath.started += instance.OnDrawPath;
+            @DrawPath.performed += instance.OnDrawPath;
+            @DrawPath.canceled += instance.OnDrawPath;
+            @Draw.started += instance.OnDraw;
+            @Draw.performed += instance.OnDraw;
+            @Draw.canceled += instance.OnDraw;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+
         /// <seealso cref="UIActions" />
         public void AddCallbacks(IUIActions instance)
         {
@@ -696,6 +893,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Exit.started += instance.OnExit;
             @Exit.performed += instance.OnExit;
             @Exit.canceled += instance.OnExit;
+
         }
 
         /// <summary>
@@ -704,6 +902,32 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
+
+        /// <seealso cref="RunesActions" />
+        private void UnregisterCallbacks(IRunesActions instance)
+        {
+            @DrawPath.started -= instance.OnDrawPath;
+            @DrawPath.performed -= instance.OnDrawPath;
+            @DrawPath.canceled -= instance.OnDrawPath;
+            @Draw.started -= instance.OnDraw;
+            @Draw.performed -= instance.OnDraw;
+            @Draw.canceled -= instance.OnDraw;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="RunesActions.UnregisterCallbacks(IRunesActions)" />.
+        /// </summary>
+        /// <seealso cref="RunesActions.UnregisterCallbacks(IRunesActions)" />
+        public void RemoveCallbacks(IRunesActions instance)
+        {
+            if (m_Wrapper.m_RunesActionsCallbackInterfaces.Remove(instance))
+
         /// <seealso cref="UIActions" />
         private void UnregisterCallbacks(IUIActions instance)
         {
@@ -719,6 +943,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public void RemoveCallbacks(IUIActions instance)
         {
             if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+
                 UnregisterCallbacks(instance);
         }
 
@@ -728,6 +953,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
+
+        /// <seealso cref="RunesActions.AddCallbacks(IRunesActions)" />
+        /// <seealso cref="RunesActions.RemoveCallbacks(IRunesActions)" />
+        /// <seealso cref="RunesActions.UnregisterCallbacks(IRunesActions)" />
+        public void SetCallbacks(IRunesActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RunesActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RunesActionsCallbackInterfaces.Clear();
+
         /// <seealso cref="UIActions.AddCallbacks(IUIActions)" />
         /// <seealso cref="UIActions.RemoveCallbacks(IUIActions)" />
         /// <seealso cref="UIActions.UnregisterCallbacks(IUIActions)" />
@@ -736,13 +971,20 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
             m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+
             AddCallbacks(instance);
         }
     }
     /// <summary>
+
+    /// Provides a new <see cref="RunesActions" /> instance referencing this action map.
+    /// </summary>
+    public RunesActions @Runes => new RunesActions(this);
+
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
     private int m_KeyboardSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -819,5 +1061,41 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnExit(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Runes" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="RunesActions.AddCallbacks(IRunesActions)" />
+    /// <seealso cref="RunesActions.RemoveCallbacks(IRunesActions)" />
+    public interface IRunesActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "DrawPath" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDrawPath(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Draw" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDraw(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
     }
 }
