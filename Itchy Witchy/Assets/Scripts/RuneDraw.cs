@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
@@ -12,7 +13,10 @@ public class RuneDraw : MonoBehaviour
     public Camera cameraMain;
     public Transform runeCenter;
     public LineRenderer targetLine;
+    public GameObject targetLineGameObject;
     public LineRenderer playerLine;
+    public GameObject playerLineGameObject;
+    public GameObject stampset;
 
     [Header("Settings")]
     public float controllerSpeed = 4f;
@@ -25,7 +29,7 @@ public class RuneDraw : MonoBehaviour
     private Vector3 previousCursorPosition;
     private Vector2 cursorMove;
     private bool isDrawing;
-    public float smoothSpeed = 5f; // Higher = snappier, lower = smoother
+    public float smoothSpeed = 5f; 
     private Vector3 smoothedMove;
     public float runeRadius = 5f;
 
@@ -34,6 +38,15 @@ public class RuneDraw : MonoBehaviour
         previousCursorPosition = transform.position;
         playerLine.positionCount = 0;
         Cursor.visible = false;
+
+        foreach (LineRenderer stamp in stampset.GetComponentsInChildren<LineRenderer>())
+        {
+            if (stamp == enabled) 
+            {
+                targetLine = stamp;
+                targetLineGameObject = stamp.gameObject;
+            }
+        }
 
 
     }
@@ -135,7 +148,10 @@ public class RuneDraw : MonoBehaviour
         isDrawing = false;
         float playerAccuracy = CalculateAccuracy(targetLine, playerLine, pointSpacing, accuracyThreshold);
         Debug.Log(playerAccuracy);
-        playerLine.positionCount = 0;
+        //playerLine.positionCount = 0;
+        cursor.SetActive(false);
+        targetLineGameObject.SetActive(false);
+        playerLineGameObject.SetActive(false); // the object this script is on
 
     }
 
