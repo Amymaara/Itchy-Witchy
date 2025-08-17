@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class RuneInteractables : InteractableObject
 {
-    public enum Material
+    
+    public enum RuneMaterial
     {
         Wood,
         Bone,
         Stone
     }
 
-    public Material material;
+    public RuneMaterial material;
 
     public float skillAcurracy = 0; // how accurate is the skill based part of the assignment
 
