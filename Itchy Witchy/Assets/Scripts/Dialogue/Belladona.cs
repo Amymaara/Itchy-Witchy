@@ -66,6 +66,7 @@ public class Belladona : NPC, ITalkable
 
     public void SetOutcome(RuneOutcome outcome)
     {
+        Debug.Log("State = " + outcome);
         currentOutcome = outcome;
     }
 

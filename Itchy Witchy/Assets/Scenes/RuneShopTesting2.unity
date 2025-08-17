@@ -9535,14 +9535,17 @@ MonoBehaviour:
   stampset: {fileID: 1651913339}
   inputManager: {fileID: 1782283319}
   workstation: {fileID: 593847043}
+  cat: {fileID: 1832834771}
+  firstButton: {fileID: 1806183208}
   controllerSpeed: 2
-  pointSpacing: 0.1
-  accuracyThreshold: 0.14
+  pointSpacing: 0.05
+  accuracyThreshold: 0.16
   deadzone: 0.1
   maxMovePerFrame: 0.2
   fixedWorldY: 0.83
   smoothSpeed: 7
   runeRadius: 5
+  canDraw: 0
 --- !u!1 &245300362
 GameObject:
   m_ObjectHideFlags: 0
@@ -25759,6 +25762,7 @@ MonoBehaviour:
   cursor: {fileID: 379213140}
   playerLine: {fileID: 242320535}
   inputManager: {fileID: 1782283319}
+  drawing: {fileID: 242320539}
   inputProduct: {fileID: 0}
   runeOnTable: {fileID: 1567565082}
   outputProduct: {fileID: 0}
