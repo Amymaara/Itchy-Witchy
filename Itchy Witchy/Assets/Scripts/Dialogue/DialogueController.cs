@@ -2,6 +2,14 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
+//Title: https://www.youtube.com/watch?v=jTPOCglHejE&t=4s&ab_channel=SasquatchBStudios
+//Author: SasquatchB Studios
+//Date Created: 18 Feb 2021
+//Date Accessed: 18 August 2025
+//Code Version: 1
+//Availability: https://www.youtube.com/watch?v=jTPOCglHejE&t=4s&ab_channel=SasquatchBStudios
+// I used this as a baseline but had to adapt it a bit since we used a 3d space for the market to disappear when textbox appears
+
 public class DialogueController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI NPCNameText;

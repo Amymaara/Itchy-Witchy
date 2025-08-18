@@ -92,7 +92,7 @@ public class FPController : MonoBehaviour
             }
         }
     }
-
+   
     public void OnInteract(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;

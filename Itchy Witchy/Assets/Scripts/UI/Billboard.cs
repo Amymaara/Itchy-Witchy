@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
+    //Title: Billboarding in Unity: Make 2D objects face the camera
+    //Author: Firnox
+    //Date Created: 23 Jul 2023
+    //Date Accessed: 15 August 2025
+    //Code Version: 1
+    //Availability: https://www.youtube.com/watch?v=eiGvVgwtJ8k&ab_channel=Firnox
+
     [SerializeField] private BillboardType billboardType;
 
     [Header("Lock rotation")]
