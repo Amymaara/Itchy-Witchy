@@ -38396,7 +38396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0469b27b99e633549828e7e27787c991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 4
   gravity: -13.2
   jumpHeight: 7.34
   cameraTransform: {fileID: 1495205452}
@@ -38407,7 +38407,7 @@ MonoBehaviour:
   pickupText: {fileID: 0}
   walkingSound: {fileID: 0}
   interactRange: 15.75
-  dialogueController: {fileID: 0}
+  dialogueController: {fileID: 1160534109}
   dialogueText: {fileID: 11400000, guid: 88af5067b98774b4c90d81b886d9233a, type: 2}
 --- !u!114 &922715180
 MonoBehaviour:
