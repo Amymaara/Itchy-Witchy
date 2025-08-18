@@ -53,9 +53,6 @@ public class RuneDraw : MonoBehaviour
                 fixedWorldY,
                 playerLineGameObject.transform.position.z);
 
-      
-
-
     }
 
     public void ChooseTargetPath(int index)
@@ -104,6 +101,7 @@ public class RuneDraw : MonoBehaviour
         cursor.transform.position += smoothedMove;
 
         // Calculate the direction vector from the center to the object
+        // based on yt video
         Vector3 direction = cursor.transform.position - runeCenter.position;
         float distance = direction.magnitude;
 
@@ -132,11 +130,7 @@ public class RuneDraw : MonoBehaviour
 
     public void OnDrawRune(InputAction.CallbackContext context)
     {
-        //if (targetLine == null)
-        //{
-        //    EventSystem.current.SetSelectedGameObject(firstButton);
-        //    return;
-        //}
+       
         if (!canDraw) 
         {
             EventSystem.current.SetSelectedGameObject(firstButton);
@@ -187,12 +181,12 @@ public class RuneDraw : MonoBehaviour
 
     public void Outcome()
     {
-        if (workstation.playerRune.material != RuneInteractables.RuneMaterial.Stone && 
+        if (workstation.playerRune.material != RuneInteractables.RuneMaterial.Stone || 
             workstation.playerRune.stamp != RuneInteractables.Stamp.Star)
         {
             cat.SetOutcome(RuneOutcome.WrongMaterials);
         }
-        if (workstation.playerRune.skillAcurracy < 0.60f)
+        else if (workstation.playerRune.skillAcurracy < 0.60f)
         {
             cat.SetOutcome(RuneOutcome.LowAccuracy);
         }
@@ -201,6 +195,8 @@ public class RuneDraw : MonoBehaviour
             cat.SetOutcome(RuneOutcome.Success);
         }
     }
+
+    // based on that commentSS
 
     List<Vector3> GetDensifiedPath(LineRenderer line, float spacing)
     {
