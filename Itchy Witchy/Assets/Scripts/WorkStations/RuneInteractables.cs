@@ -23,4 +23,6 @@ public class RuneInteractables : InteractableObject
 
     public float skillAcurracy = 0; // how accurate is the skill based part of the assignment
 
+   
+
 }
