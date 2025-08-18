@@ -5,8 +5,7 @@ using TMPro;
 // Title: First Person Controller Script
 // Author: Hayes, A
 // Date: 09/08/2025
-// Code Variation:
-// Avalability:
+// Avalability: DIGA2001A Lecture Slides
 public class FPController : MonoBehaviour
 {
     [Header("Movement Settings")]

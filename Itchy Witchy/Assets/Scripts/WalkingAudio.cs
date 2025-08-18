@@ -9,8 +9,7 @@ public class WalkingAudio : MonoBehaviour
     // Title: How to Add Footsteps Sounds in Unity
     // Author: Omogonix
     // Date: 14/08/2025
-    // Code Variation: 
-    // Avalability:
+    // Avalability: https://youtu.be/uNYF1gsvD1A?si=aMqA-JzoVf382j9n 
     private void Update()
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
