@@ -11,7 +11,7 @@ public abstract class NPC : MonoBehaviour, IInteractable
 
     [SerializeField] private UnityEvent onInteract;
 
-    private const float INTERACT_DISTANCE = 20f;
+    private const float INTERACT_DISTANCE = 3f;
 
     private void Start()
     {

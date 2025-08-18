@@ -30,7 +30,7 @@ public class FPController : MonoBehaviour
     public WalkingAudio walkingSound;
 
     [Header("Interaction")]
-    [SerializeField] private float interactRange = 20f;
+    [SerializeField] private float interactRange = 3f;
 
     [Header("Dialogue")]
     [SerializeField] private DialogueController dialogueController;
