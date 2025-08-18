@@ -15,10 +15,6 @@ public class BookShelf : MonoBehaviour, IInteractable
     }
 
 
-    public void OnMenuExit(InputAction.CallbackContext context) 
-    {
-        inputManager.SwitchToGameplay();
-        bookCanvas.SetActive(false);
-    }
+  
 
 }

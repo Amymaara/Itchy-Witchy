@@ -25,7 +25,10 @@ public class RuneBehaviour : MonoBehaviour
     public Material bone;
     public Material stone;
 
-    
+    public Material Star;
+    public Material Triangle;
+    public Material Square;
+   
 
    
     public void OnRuneTableInteract(RuneInteractables input)
@@ -61,7 +64,10 @@ public class RuneBehaviour : MonoBehaviour
         playerLine.SetActive(true);
         canvas.SetActive(false);
         workstation.playerRune.stamp = RuneInteractables.Stamp.Star;
+        workstation.playerRune.secondMesh.SetActive(true);
+        workstation.playerRune.secondMesh.GetComponent<Renderer>().material = Star;
         drawing.canDraw = true;
+
     }
 
     public void OnSquareButton() 
@@ -71,6 +77,8 @@ public class RuneBehaviour : MonoBehaviour
         playerLine.SetActive(true);
         canvas.SetActive(false);
         workstation.playerRune.stamp = RuneInteractables.Stamp.Square;
+        workstation.playerRune.secondMesh.SetActive(true);
+        workstation.playerRune.secondMesh.GetComponent<Renderer>().material = Square;
         drawing.canDraw = true;
     }
 
@@ -81,6 +89,8 @@ public class RuneBehaviour : MonoBehaviour
         playerLine.SetActive(true);
         canvas.SetActive(false);
         workstation.playerRune.stamp = RuneInteractables.Stamp.Triangle;
+        workstation.playerRune.secondMesh.SetActive(true);
+        workstation.playerRune.secondMesh.GetComponent<Renderer>().material = Triangle;
         drawing.canDraw = true;
     }
 
