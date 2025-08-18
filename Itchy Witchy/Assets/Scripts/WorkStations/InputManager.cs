@@ -12,7 +12,14 @@ public class InputManager : MonoBehaviour
         RuneMinigame.SetActive(false);
         cursor.SetActive(false);
         player.SetActive(true);
+        player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
         manager.SwitchToPlayerCam();
+    }
+
+    public void SwitchToUI()
+    {
+        player.SetActive(true);
+        player.GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
     }
 
     public void SwitchToRuneDrawing()

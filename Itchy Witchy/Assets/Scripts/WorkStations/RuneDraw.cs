@@ -1,11 +1,15 @@
+using Mono.Cecil.Cil;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.ProBuilder;
+using static Unity.VisualScripting.Member;
 using static UnityEngine.GraphicsBuffer;
-using UnityEngine.EventSystems;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class RuneDraw : MonoBehaviour
 {
@@ -85,7 +89,20 @@ public class RuneDraw : MonoBehaviour
         cursorMove = context.ReadValue<Vector2>();
     }
 
-    // adapted from pix and dev
+    // adapted from pix and dev, i had to try find a way to get it to work with the new input system & 3D.  
+    //Title: How to Draw in Unity using Line Renderer | Unity Tutorial
+    //Author: Pix and Dev
+    //Date Created: 18 Mar 2023
+    //Date accessed: 14 August 2025
+    //Code version: 1
+    //Availability: https://www.youtube.com/watch?v=M4247oZ8sEI
+
+    //I did use chatGPT to help with the smoothing of the movement.
+    //Title: Line Tracing Minigame Help
+    //Author: ChatGPT 
+    //Date accessed: 14 August 2025
+    //Code version: 1
+    //Availability: https://chatgpt.com/c/689cde06-8b18-832c-bd0d-f75bdde15edd
     public void HandlePoint()
     {
         Vector2 filteredInput = cursorMove;
@@ -100,8 +117,7 @@ public class RuneDraw : MonoBehaviour
 
         cursor.transform.position += smoothedMove;
 
-        // Calculate the direction vector from the center to the object
-        // based on yt video
+        // Calculate the direction vector from the center to the cursor
         Vector3 direction = cursor.transform.position - runeCenter.position;
         float distance = direction.magnitude;
 
@@ -196,7 +212,12 @@ public class RuneDraw : MonoBehaviour
         }
     }
 
-    // based on that commentSS
+    // based on this comment
+    //Title: Mario Crazy Cutter Replica Help
+    //Author: Mysterion336
+    //Date: 18 August 2025
+    //Code version: 1
+    //Availability: https://discussions.unity.com/t/mario-crazy-cutter-replica-help/1678265
 
     List<Vector3> GetDensifiedPath(LineRenderer line, float spacing)
     {
@@ -218,6 +239,13 @@ public class RuneDraw : MonoBehaviour
         }
         return points;
     }
+
+    // based on this comment, i made some edits
+    //Title: Mario Crazy Cutter Replica Help
+    //Author: Mysterion336
+    //Date: 18 August 2025
+    //Code version: 1
+    //Availability: https://discussions.unity.com/t/mario-crazy-cutter-replica-help/1678265
 
     public float CalculateAccuracy(LineRenderer target, LineRenderer player, float spacing, float threshold)
     {

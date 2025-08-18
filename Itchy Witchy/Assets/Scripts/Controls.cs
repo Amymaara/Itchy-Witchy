@@ -330,7 +330,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""30093a3d-e9c8-437a-954d-0e6520596148"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
