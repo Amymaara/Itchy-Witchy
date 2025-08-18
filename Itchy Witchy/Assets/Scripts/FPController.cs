@@ -56,7 +56,7 @@ public class FPController : MonoBehaviour
 
         if (heldObject != null)
         {
-            heldObject.MoveToHoldPoint(holdPoint.position);
+            heldObject.transform.position = holdPoint.position;
         }
     }
     public void OnMove(InputAction.CallbackContext context)

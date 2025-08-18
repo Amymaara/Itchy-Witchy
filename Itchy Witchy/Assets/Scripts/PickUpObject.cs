@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using  UnityEngine.InputSystem;
 using UnityEngine;
 
 // Title: How to Pick Up and Drop Objects in Unity
@@ -6,35 +9,92 @@ using UnityEngine;
 // Avalability: DIGA2001A Lecture Slides
 public class PickUpObject : MonoBehaviour
 {
-private Rigidbody rb;
+    public GameObject player;
+    public Transform holdPos;
+    public float pickUpRange = 10f;
 
-    void Awake()
+    private GameObject heldObject;
+    private Rigidbody heldObjectRb;
+    private bool canDrop = true;
+    private int LayerNumber;
+
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        LayerNumber = LayerMask.NameToLayer("holdLayer");
     }
 
+    void Update()
+    {
+        if (heldObject != null)
+        {
+            MoveObject();
+            StopClipping();
+        }
+    }
+
+    void OnPickUp(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        if (heldObject == null) // if no object is held
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+            {
+                if (hit.transform.CompareTag("canPickUp"))
+                {
+                    DoPickUp(hit.transform.gameObject);
+                }
+            }
+        }
+    }
     public void PickUp(Transform holdPoint)
     {
-        rb.useGravity = false;
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-
-        transform.SetParent(holdPoint);
-        transform.localPosition = Vector3.zero; // Reset position relative to hold point
-        transform.localRotation = Quaternion.identity; // Reset rotation relative to hold point
+        DoPickUp(gameObject); // reuse your existing method
     }
 
     public void Drop()
     {
-        rb.useGravity = true;
-        transform.SetParent(null);
-        rb.constraints = RigidbodyConstraints.None; // adds rotation back
+        DropObject();
     }
 
-    public void MoveToHoldPoint(Vector3 targetPosition)
-    {
-        rb.MovePosition(targetPosition);
-    }
+    private void DoPickUp(GameObject pickUpObject)
+        {
+            if (pickUpObject.TryGetComponent(out Rigidbody rb))
+            {
+                heldObject = pickUpObject;
+                heldObjectRb = rb;
+                heldObjectRb.isKinematic = true; // make the object kinematic
+                heldObject.transform.parent = holdPos.transform;
+                heldObject.layer = LayerNumber; // set the layer to holdLayer
+
+                Physics.IgnoreCollision(heldObject.GetComponent<Collider>(), player.GetComponent<Collider>(), true); // ignore collision with player
+            }
+
+        }
+        private void DropObject()
+        {
+            Physics.IgnoreCollision(heldObject.GetComponent<Collider>(), player.GetComponent<Collider>(), false); // stop ignoring collision with player
+            heldObject.layer = 0;
+            heldObjectRb.isKinematic = false; // make the object non-kinematic
+            heldObject.transform.parent = null; // remove parent
+            heldObject = null; // clear the held object
+        }
+
+        void MoveObject()
+        {
+            heldObject.transform.position = holdPos.transform.position; // move the object to the hold position
+        }
+
+        void StopClipping()
+        {
+            var clipRange = Vector3.Distance(heldObject.transform.position, transform.position);
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(transform.position, transform.TransformDirection(Vector3.forward), clipRange);
+
+            if (hits.Length > 1)
+            {
+                heldObject.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); // move the object to the hold position
+            }
+        }
+
 }
