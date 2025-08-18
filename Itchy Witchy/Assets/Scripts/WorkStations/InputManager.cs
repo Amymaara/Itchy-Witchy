@@ -7,6 +7,16 @@ public class InputManager : MonoBehaviour
     public GameObject cursor;
     public CameraManager manager;
     public GameObject RuneMinigame;
+    public GameObject popUpCanvas;
+    public GameObject ToolTipsCanvas;
+
+    private void Start()
+    {
+        SwitchToUI();
+        ToolTipsCanvas.SetActive(true);
+
+    }
+
     public void SwitchToGameplay()
     {
         RuneMinigame.SetActive(false);
@@ -28,5 +38,15 @@ public class InputManager : MonoBehaviour
         player.SetActive(false);
         cursor.SetActive(true);
         manager.SwitchToRuneCam();
+    }
+
+    public void OnMenuExit(InputAction.CallbackContext context)
+    {
+        SwitchToGameplay();
+        foreach (Canvas canvas in popUpCanvas.GetComponentsInChildren<Canvas>())
+        {
+            canvas.gameObject.SetActive(false);
+        }
+        
     }
 }
