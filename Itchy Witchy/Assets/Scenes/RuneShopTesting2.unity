@@ -11482,7 +11482,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &514925379
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11509,7 +11509,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &514925380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13890,7 +13890,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1835141340}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1434492833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -18604,7 +18604,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &1206791362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23866,7 +23866,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1281648742
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23893,7 +23893,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1281648743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24524,6 +24524,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 472119331}
+  - {fileID: 868199644}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465262190
@@ -25060,7 +25061,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &1602689948
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25081,7 +25082,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1602689949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29595,4 +29596,3 @@ SceneRoots:
   - {fileID: 786798884}
   - {fileID: 1434492833}
   - {fileID: 847271369}
-  - {fileID: 868199644}
