@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Unity.VisualScripting.ReorderableList;
 
 public class WalkingAudio : MonoBehaviour
 {
-    public AudioSource walkingSound;
+    /*public AudioSource walkingSound;
 
     // Title: How to Add Footsteps Sounds in Unity
     // Author: Omogonix
@@ -20,6 +21,38 @@ public class WalkingAudio : MonoBehaviour
         else
         {
             walkingSound.enabled = false;
+        }
+    }
+    */
+
+    public AudioClip audioClip;
+    public float minSpeed = 0.1f;
+
+    CharacterController cc;
+    AudioSource src;
+
+    private void Awake()
+    {
+        cc = GetComponent<CharacterController>();
+        src = GetComponent<AudioSource>();
+        src.playOnAwake = false;
+        src.loop = true;
+    }
+
+    private void Update()
+    {
+       Vector3 v = cc.velocity;
+       bool moving = v.magnitude > minSpeed;
+
+       if (moving)
+        {
+            src.Play();
+
+        }
+
+        else
+        {
+            src.Stop();
         }
     }
 }

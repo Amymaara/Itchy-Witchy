@@ -38286,7 +38286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443519b88a50b9b47aa1677287406d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSound: {fileID: 922715178}
+  audioClip: {fileID: 8300000, guid: 2e1cf937cb7442a4499d786290f0154b, type: 3}
+  minSpeed: 0.01
 --- !u!82 &922715178
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38294,7 +38295,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922715176}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -38405,7 +38406,7 @@ MonoBehaviour:
   pickupRange: 18.8
   holdPoint: {fileID: 1699926554}
   pickupText: {fileID: 0}
-  walkingSound: {fileID: 0}
+  walkingSound: {fileID: 922715177}
   interactRange: 15.75
   dialogueController: {fileID: 1160534109}
   dialogueText: {fileID: 11400000, guid: 88af5067b98774b4c90d81b886d9233a, type: 2}
