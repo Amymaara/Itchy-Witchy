@@ -10,6 +10,7 @@ public class InteractableObject : MonoBehaviour
     public enum Station
     {
         Runes,
+        Potions,
         Cat
     }
 

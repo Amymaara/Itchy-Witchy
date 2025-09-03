@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public GameObject RuneMinigame;
     public GameObject popUpCanvas;
     public GameObject ToolTipsCanvas;
+    //public GameObject potionFillCanvas;
 
     private void Start()
     {
@@ -39,6 +40,8 @@ public class InputManager : MonoBehaviour
         cursor.SetActive(true);
         manager.SwitchToRuneCam();
     }
+
+ 
 
     public void OnMenuExit(InputAction.CallbackContext context)
     {
