@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PotionInteractables : MonoBehaviour
+public class PotionInteractables : InteractableObject
 {
 
     public enum PotionMaterial
