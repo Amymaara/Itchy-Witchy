@@ -35575,7 +35575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 15, y: 522}
+  m_AnchoredPosition: {x: 15, y: 521}
   m_SizeDelta: {x: 0, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730685990
@@ -35603,7 +35603,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ReverseArrangement: 1
 --- !u!114 &730685991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79088,7 +79088,7 @@ GameObject:
   - component: {fileID: 2067968264}
   - component: {fileID: 2067968263}
   m_Layer: 5
-  m_Name: Image
+  m_Name: PotionFillBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
