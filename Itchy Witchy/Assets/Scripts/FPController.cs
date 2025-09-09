@@ -22,6 +22,7 @@ public class FPController : MonoBehaviour
     public float pickupRange = 5f;
     public Transform holdPoint;
     private PickUpObject heldObject;
+    public InteractableObject holdObject;
 
     [Header("UI Elements")]
     public TextMeshProUGUI pickupText;
@@ -31,6 +32,7 @@ public class FPController : MonoBehaviour
 
     [Header("Interaction")]
     [SerializeField] private float interactRange = 3f;
+    private IFillable cauldronFill;
 
     [Header("Dialogue")]
     [SerializeField] private DialogueController dialogueController;
@@ -51,6 +53,11 @@ public class FPController : MonoBehaviour
 
     private void Update()
     {
+        if (cauldronFill != null && filling)
+        {
+            cauldronFill.Fill();
+        }
+
         HandleMovement();
         HandleLook();
 
@@ -67,7 +74,7 @@ public class FPController : MonoBehaviour
     {
         lookInput = context.ReadValue<Vector2>();
     }
-    
+
     public void OnPickup(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -82,6 +89,11 @@ public class FPController : MonoBehaviour
                     {
                         pickUp.PickUp(holdPoint);
                         heldObject = pickUp;
+                        InteractableObject intObj = pickUp.gameObject.GetComponent<InteractableObject>();
+                        if (intObj != null)
+                        {
+                            holdObject = intObj;
+                        }
                     }
                 }
             }
@@ -89,27 +101,58 @@ public class FPController : MonoBehaviour
             {
                 heldObject.Drop();
                 heldObject = null;
+                holdObject = null;
             }
         }
     }
-   
+    public bool filling = false;
     public void OnInteract(InputAction.CallbackContext ctx)
     {
-        if (!ctx.performed) return;
+        if (ctx.phase == InputActionPhase.Started)
+        {
+            Debug.Log("Press started");
 
-        if (dialogueController && dialogueController.gameObject.activeInHierarchy)
-        {
-            dialogueController.DisplayNextParagraph(dialogueText);
-            return;
+            if (dialogueController && dialogueController.gameObject.activeInHierarchy)
+            {
+                dialogueController.DisplayNextParagraph(dialogueText);
+                return;
+            }
+
+            Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+            {
+                // try and fill in the cauldron bar thing
+                if (hit.collider.TryGetComponent<IFillable>(out var fillable))
+                {
+                    cauldronFill = fillable;
+                    cauldronFill.OnFillStart();
+                    filling = true;
+                    Debug.Log("Started filling");
+                    return;
+                }
+
+                // normal interactable items
+                if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
+                {
+                    interactable.Interact();
+                }
+            }
         }
-        
-        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+        else if (ctx.phase == InputActionPhase.Canceled)
         {
-            var interactable = hit.collider.GetComponent<IInteractable>();
-            if (interactable != null) interactable.Interact();
+            if (cauldronFill != null)
+            {
+                Debug.Log("Cancelling Fill");
+                cauldronFill.OnFillStop();
+                cauldronFill = null;
+                filling = false;
+            }
         }
     }
+
+      
+
+    
 
 
     public void HandleMovement()
