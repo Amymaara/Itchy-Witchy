@@ -65250,7 +65250,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1573876354}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1789267191}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: SwitchToGameplay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1573876354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71966,6 +71978,8 @@ MonoBehaviour:
   RuneMinigame: {fileID: 2120846686}
   popUpCanvas: {fileID: 1616777835}
   ToolTipsCanvas: {fileID: 446517275}
+  DialogueCanvas: {fileID: 0}
+  PotionWorldSpaceCanvas: {fileID: 0}
   potionMix: {fileID: 2090665869}
 --- !u!114 &1789267192
 MonoBehaviour:
@@ -76313,7 +76327,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933683423}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1933683427
 Camera:
   m_ObjectHideFlags: 0

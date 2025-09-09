@@ -55,22 +55,20 @@ public class PotionFillManager : MonoBehaviour
     {
         if (!filling || currentRect == null) return;
 
-        float growth = 300f * Time.deltaTime; 
-        float newHeight = currentRect.sizeDelta.y + growth;
+        float growth = 300f * Time.deltaTime;
+        float availableSpace = maxFillHeight - currentHeight;
+        float newHeight = Mathf.Min(currentRect.sizeDelta.y + growth, availableSpace);
 
-        if (currentHeight + growth > maxFillHeight)
-        {
-            newHeight = maxFillHeight - currentHeight;
-            filling = false;
-        }
-        if (newHeight >= maxFillHeight)
+        currentRect.sizeDelta = new Vector2(currentRect.sizeDelta.x, newHeight);
+
+        // check if bar is max height
+        if (currentHeight + newHeight >= maxFillHeight)
         {
             Debug.Log("Max Fill");
-            OnFullMeter();
+            OnFullMeter(); 
+            filling = false;
         }
 
-            currentRect.sizeDelta = new Vector2(currentRect.sizeDelta.x, newHeight);
-       
     }
 
    
@@ -79,9 +77,13 @@ public class PotionFillManager : MonoBehaviour
         if (!filling || currentRect == null) return;
 
         currentHeight += currentRect.sizeDelta.y;
+        currentHeight = Mathf.Min(currentHeight, maxFillHeight); 
+
         filling = false;
         currentSection = null;
         currentRect = null;
+       // ingredient = null;
+        //fpcontroller.holdObject = null;
     }
 
   
