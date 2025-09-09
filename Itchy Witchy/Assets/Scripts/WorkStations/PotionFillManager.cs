@@ -13,6 +13,9 @@ public class PotionFillManager : MonoBehaviour
     public PotionInteractables ingredient;
     public FPController fpcontroller;
 
+    [Header("MiniGame Setup")]
+    public InputManager inputManager;
+
     private float currentHeight = 0f;
     private GameObject currentSection;
     private RectTransform currentRect;
@@ -60,8 +63,13 @@ public class PotionFillManager : MonoBehaviour
             newHeight = maxFillHeight - currentHeight;
             filling = false;
         }
+        if (newHeight >= maxFillHeight)
+        {
+            Debug.Log("Max Fill");
+            OnFullMeter();
+        }
 
-        currentRect.sizeDelta = new Vector2(currentRect.sizeDelta.x, newHeight);
+            currentRect.sizeDelta = new Vector2(currentRect.sizeDelta.x, newHeight);
        
     }
 
@@ -78,15 +86,23 @@ public class PotionFillManager : MonoBehaviour
 
   
 
-
-    /*
-      public void ResetPie()
+    public void OnFullMeter()
+    {
+        inputManager.SwitchToPotionMix();
+        ResetMeter();
+        
+    }
+    
+      public void ResetMeter()
       {
+
           foreach (Transform child in fillContainer)
           {
               Destroy(child.gameObject);
           }
           currentHeight = 0f;
-      }
-    */
+
+        
+    }
+    
 }
