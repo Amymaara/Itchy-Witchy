@@ -71,7 +71,7 @@ public class PotionFillManager : MonoBehaviour
     {
         if (!filling || currentRect == null) return;
 
-        float growth = 200f * Time.deltaTime;
+        float growth = 250f * Time.deltaTime;
         float availableSpace = maxFillHeight - currentHeight;
         float newHeight = Mathf.Min(currentRect.sizeDelta.y + growth, availableSpace);
 
