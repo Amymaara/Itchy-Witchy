@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f99aef4d1b872a479b1791f056d5c2c, type: 3}
   m_Name: bumpyRide
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
-  cardFront: {fileID: 0}
-  cardType: 0
+  cardName: 'Reason:'
+  heading: 'Reason:'
+  description: Had a rough ride into Limbo
+  cardFront: {fileID: 7482667652216324306, guid: 969fa139c6c4b9b448904059fceabe99, type: 3}
+  cardType: 2
   itemID: 

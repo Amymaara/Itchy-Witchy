@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum TarotCards
+public enum TarotCardType
 {
     CauseOfDeath,
     Item,
@@ -8,12 +8,13 @@ public enum TarotCards
 }
 
 [CreateAssetMenu(fileName = "NewCard", menuName = "Tarot/Card")]
-public class TarotCardType : ScriptableObject
+public class TarotCards : ScriptableObject
 {
     public string cardName;
+    public string heading;
     [TextArea] public string description;
     public Sprite cardFront;
 
-    public TarotCards cardType;
+    public TarotCardType cardType;
     public string itemID;
 }
