@@ -459,7 +459,6 @@
             ]
         },
         {
-<<<<<<< HEAD:Itchy Witchy/Assets/Scripts/Controls.inputactions
             "name": "Tarot",
             "id": "c501880b-57c4-436c-9bc8-d7764e9a999f",
             "actions": [
@@ -467,42 +466,6 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "b3ab414b-9189-45b9-958c-5c7ac994ff25",
-=======
-            "name": "Potions",
-            "id": "d36cb995-de3e-48b6-99fb-537d4cd41e8f",
-            "actions": [
-                {
-                    "name": "Left",
-                    "type": "Button",
-                    "id": "439f7e25-f7f1-4182-a511-3bee509bf37f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Right",
-                    "type": "Button",
-                    "id": "a04a4548-2899-431e-8e95-8adae9dee166",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "5f350bea-d423-4235-9c1d-bb6a521a89e7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "011e2ca7-7d13-4234-b907-20e436d0f7c0",
->>>>>>> A2_Tanya:Itchy Witchy/Assets/Scripts/FPControls/Controls.inputactions
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -512,63 +475,23 @@
             "bindings": [
                 {
                     "name": "",
-<<<<<<< HEAD:Itchy Witchy/Assets/Scripts/Controls.inputactions
                     "id": "d47dd7a2-e371-47ee-b6b2-af4f218eff9d",
                     "path": "<Mouse>/leftButton",
                     "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": ";Keyboard",
                     "action": "Interact",
-=======
-                    "id": "c69109df-22c0-463f-9cd0-f058554b6301",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
->>>>>>> A2_Tanya:Itchy Witchy/Assets/Scripts/FPControls/Controls.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-<<<<<<< HEAD:Itchy Witchy/Assets/Scripts/Controls.inputactions
                     "id": "d98b14f0-38ef-4b05-a8c7-1eba4c0ca81b",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Interact",
-=======
-                    "id": "4190ea61-9ba8-40d5-be2a-e1b676506243",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "09d38f92-abed-406d-9a55-db1299f71f59",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9b1a2e90-323d-43a1-98e6-3a7df4942560",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
->>>>>>> A2_Tanya:Itchy Witchy/Assets/Scripts/FPControls/Controls.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

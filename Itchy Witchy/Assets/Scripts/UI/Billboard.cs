@@ -27,26 +27,22 @@ public class Billboard : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Camera.main != null) 
+        switch (billboardType)
         {
-            switch (billboardType)
-            {
-                case BillboardType.LookAtCamera:
-                    transform.LookAt(Camera.main.transform.position, Vector3.up);
-                    break;
-                case BillboardType.CameraForward:
-                    transform.forward = Camera.main.transform.forward;
-                    break;
-                default:
-                    break;
-            }
-
-            Vector3 rotation = transform.rotation.eulerAngles;
-            if (lockX) { rotation.x = originalRotation.x; }
-            if (lockY) { rotation.y = originalRotation.y; }
-            if (lockZ) { rotation.z = originalRotation.z; }
-            transform.rotation = Quaternion.Euler(rotation);
+            case BillboardType.LookAtCamera:
+                transform.LookAt(Camera.main.transform.position, Vector3.up);
+                break;
+            case BillboardType.CameraForward:
+                transform.forward = Camera.main.transform.forward;
+                break;
+            default:
+                break;
         }
-        
+
+        Vector3 rotation = transform.rotation.eulerAngles;
+        if (lockX) { rotation.x = originalRotation.x; }
+        if (lockY) { rotation.y = originalRotation.y; }
+        if (lockZ) { rotation.z = originalRotation.z; }
+        transform.rotation = Quaternion.Euler(rotation);
     }
 }
