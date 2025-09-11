@@ -22,6 +22,10 @@ public class TarotManager : MonoBehaviour
     public void OpenTarotSpread()
     {
         tarotCanvas.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         StartSpread();
     }
 
@@ -34,7 +38,11 @@ public class TarotManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             revealed[i] = false;
-            cardDescriptions[i].text = "???";
+            cardDescriptions[i].text = "";
+
+            int buttonIndex = i;
+            cardButtons[i].onClick.RemoveAllListeners();
+            cardButtons[i].onClick.AddListener(() => RevealCard(buttonIndex));
         }
     }
     public void RevealCard(int index)
@@ -52,9 +60,18 @@ public class TarotManager : MonoBehaviour
 
         if (revealed[0] && revealed[1] && revealed[2])
         {
-            tarotCanvas.SetActive(false);
-
-            PlayerInput.SwitchCurrentActionMap("Player");
+            CloseSpread();
         }
+    }
+    private void CloseSpread()
+    {
+         tarotCanvas.SetActive(false);
+
+         Cursor.lockState = CursorLockMode.Locked;
+         Cursor.visible = false;
+
+         PlayerInput.SwitchCurrentActionMap("Player");
+
+         objectiveUI.ShowObjectiveCard();
     }
 }
