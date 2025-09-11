@@ -457,6 +457,7 @@
                     "isPartOfComposite": false
                 }
             ]
+
         },
         {
             "name": "Tarot",
@@ -496,6 +497,7 @@
                     "isPartOfComposite": false
                 }
             ]
+
         }
     ],
     "controlSchemes": [

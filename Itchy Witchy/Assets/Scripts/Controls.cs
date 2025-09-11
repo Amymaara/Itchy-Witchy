@@ -543,6 +543,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+
         },
         {
             ""name"": ""Tarot"",
@@ -582,6 +583,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+
         }
     ],
     ""controlSchemes"": [
@@ -629,17 +631,20 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Exit = m_UI.FindAction("Exit", throwIfNotFound: true);
+
         // Tarot
         m_Tarot = asset.FindActionMap("Tarot", throwIfNotFound: true);
         m_Tarot_Interact = m_Tarot.FindAction("Interact", throwIfNotFound: true);
-    }
+
 
     ~@Controls()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, Controls.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Runes.enabled, "This will cause a leak and performance issues, Controls.Runes.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, Controls.UI.Disable() has not been called.");
+
         UnityEngine.Debug.Assert(!m_Tarot.enabled, "This will cause a leak and performance issues, Controls.Tarot.Disable() has not been called.");
+
     }
 
     /// <summary>
@@ -1066,6 +1071,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     /// </summary>
     public UIActions @UI => new UIActions(this);
 
+
     // Tarot
     private readonly InputActionMap m_Tarot;
     private List<ITarotActions> m_TarotActionsCallbackInterfaces = new List<ITarotActions>();
@@ -1161,6 +1167,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="TarotActions" /> instance referencing this action map.
     /// </summary>
     public TarotActions @Tarot => new TarotActions(this);
+
     private int m_KeyboardSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1274,6 +1281,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnExit(InputAction.CallbackContext context);
     }
+
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Tarot" which allows adding and removing callbacks.
     /// </summary>
@@ -1289,4 +1297,5 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
     }
+
 }
