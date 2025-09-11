@@ -14,6 +14,7 @@ public class InteractableObject : MonoBehaviour
         Cat
     }
 
+   
     public Station station;
     
     
