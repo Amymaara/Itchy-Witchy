@@ -5,10 +5,18 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] private Image timerBar;
 
+    [Header("Settings")]
     public int timerDuration;
+    public int totalCustomers = 0;
+    
     private int remainingDuration;
+    private int customersServed;
+    private bool timerRunning;
+    private bool timerStarted;
+
 
     void Start()
     {
