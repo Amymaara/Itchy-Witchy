@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c20d07cde77604a83f54d91f222e01, type: 3}
+  m_Name: New Day Sequence
+  m_EditorClassIdentifier: 
+  dayName: Day Test
+  queue:
+  - customerPrefab: {fileID: 2097954115245852580, guid: b619c6a83d32fa64cb3635c1f56d689a, type: 3}
+    order: {fileID: 11400000, guid: 8e94fa66977dcd64484f56cc8588f8a0, type: 2}
+  - customerPrefab: {fileID: 2097954115245852580, guid: b619c6a83d32fa64cb3635c1f56d689a, type: 3}
+    order: {fileID: 11400000, guid: 81b76b933ee140946a69897a6b5cc655, type: 2}

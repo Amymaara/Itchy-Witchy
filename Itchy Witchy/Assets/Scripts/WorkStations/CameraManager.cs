@@ -12,7 +12,6 @@ public class CameraManager : MonoBehaviour
 {
     public Camera playerCamera;
     public Camera runeCamera;
-    public Camera potionCamera;
 
     private Camera activeCamera;
 
@@ -37,10 +36,5 @@ public class CameraManager : MonoBehaviour
     public void SwitchToPlayerCam()
     {
         SetActiveCamera(playerCamera);
-    }
-
-    public void SwitchToPotionCam()
-    {
-        SetActiveCamera(potionCamera);
     }
 }

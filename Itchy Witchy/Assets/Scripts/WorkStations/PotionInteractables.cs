@@ -11,15 +11,8 @@ public class PotionInteractables : InteractableObject
         dragonsBlood
     }
 
-    public enum Recipe
-    {
-        None,
-        Knowledge,
-        Love
-    }
 
     public PotionMaterial material;
-    public Recipe recipe;
     public Color fillColour;
    
 
