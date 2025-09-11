@@ -118,9 +118,22 @@ public class FPController : MonoBehaviour
                 return;
             }
 
+            // this is for handling logic of giving customer items 
+
             Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
             {
+                var customer = hit.collider.GetComponent<Customer>();
+                if (customer)
+                {
+                    var held = holdPoint.GetComponentInChildren<ServeableItem>();
+                    if (held)
+                    {
+                        bool ok = customer.TryServe(held);
+                        if (ok) Destroy(held.gameObject);
+                    }
+                }
+
                 // try and fill in the cauldron bar thing
                 if (hit.collider.TryGetComponent<IFillable>(out var fillable))
                 {
@@ -137,6 +150,8 @@ public class FPController : MonoBehaviour
                     interactable.Interact();
                 }
             }
+
+           
         }
         else if (ctx.phase == InputActionPhase.Canceled)
         {
