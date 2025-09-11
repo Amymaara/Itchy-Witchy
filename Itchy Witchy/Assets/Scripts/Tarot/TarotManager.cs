@@ -15,16 +15,18 @@ public class TarotManager : MonoBehaviour
     public Button continueButton;
     public Sprite backOfCardSprite;
     public PlayerInput playerInput;
+    public TarotReadings[] tarotReadings;
 
     private TarotCards[] spread = new TarotCards[3];
     private bool[] revealed = new bool[3];
     private string itemToMake;
+    private bool isSpreadActive = false;
+    private TarotReadings currentReading;
 
     public TarotCards[] causeOfDeathCards;
     public TarotCards[] itemCards;
     public TarotCards[] reasonWhyCards;
-
-    private bool isSpreadActive = false;
+    
     public void OpenTarotSpread()
     {
         if(isSpreadActive) return;
@@ -42,10 +44,11 @@ public class TarotManager : MonoBehaviour
         //Debug.Log("StartSpread called");
 
         itemToMake = "";
+        currentReading = tarotReadings[Random.Range(0, tarotReadings.Length)];
 
-        spread[0] = causeOfDeathCards[Random.Range(0, causeOfDeathCards.Length)];
-        spread[1] = itemCards[Random.Range(0, itemCards.Length)];
-        spread[2] = reasonWhyCards[Random.Range(0, reasonWhyCards.Length)];
+        spread[0] = currentReading.causeOfDeathCards;
+        spread[1] = currentReading.itemCards;
+        spread[2] = currentReading.reasonWhyCards;
 
         continueButton.gameObject.SetActive(false);
 
@@ -89,7 +92,7 @@ public class TarotManager : MonoBehaviour
 
          playerInput.SwitchCurrentActionMap("Player");
 
-         Debug.Log($"Objective item to make: {itemToMake}");
+         //Debug.Log($"Objective item to make: {itemToMake}");
          objectiveUI.SetObjective(itemToMake);
          objectiveUI.ShowObjectiveCard();
 

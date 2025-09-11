@@ -30366,6 +30366,11 @@ MonoBehaviour:
   continueButton: {fileID: 674096408}
   backOfCardSprite: {fileID: 7482667652216324306, guid: eefe6bf5c7364804aa9d39ef1b38bff7, type: 3}
   playerInput: {fileID: 922715180}
+  tarotReadings:
+  - {fileID: 11400000, guid: 6943be2a201067d4d882bd0a6ad779b9, type: 2}
+  - {fileID: 11400000, guid: 0ec3cd2f4dd00fb4cb2fdce08771bbeb, type: 2}
+  - {fileID: 11400000, guid: f2e6634a61986704d80744c006b32f24, type: 2}
+  - {fileID: 11400000, guid: 1606f16c07216614e8e996a9fb4654af, type: 2}
   causeOfDeathCards:
   - {fileID: 11400000, guid: 194b6bb9e5ee96147acb077e59af2f3c, type: 2}
   - {fileID: 11400000, guid: 7ba8139c5d325f64e92e9f75cbf71e08, type: 2}
@@ -30381,7 +30386,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e41c9958b6880646900c98d66513f9b, type: 2}
   - {fileID: 11400000, guid: dd24fad5c2bf71f4f97a86b1a98ce912, type: 2}
   - {fileID: 11400000, guid: 1cc484b394efd7940aae647152e50658, type: 2}
-  flipDuration: 0.5
+  flipDuration: 0.7
 --- !u!1 &446517275
 GameObject:
   m_ObjectHideFlags: 0
