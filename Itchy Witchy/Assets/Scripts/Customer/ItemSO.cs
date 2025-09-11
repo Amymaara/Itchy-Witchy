@@ -5,7 +5,7 @@ public class ItemSO : ScriptableObject
 {
     public class ItemSo : ScriptableObject
     {
-        public string displayName; 
+        public string displayName;
     }
 
 }

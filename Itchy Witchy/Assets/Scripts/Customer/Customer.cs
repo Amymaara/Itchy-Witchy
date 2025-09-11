@@ -8,12 +8,12 @@ public class Customer : MonoBehaviour
 
     public void SetOrder(ItemSO item)
     {
-        requiredItem = item; 
+        requiredItem = item;
     }
 
     public bool TryServe(ServeableItem served)
     {
-        if (served && served.item == requiredItem) //checks if the handed in item is the required item
+        if (served && served.item == requiredItem)
         {
             Debug.Log("Correct item given");
 
@@ -25,7 +25,7 @@ public class Customer : MonoBehaviour
 
         else
         {
-            Debug.Log("Wrong item"); // if item mismatch doesnt accept 
+            Debug.Log("Wrong item");
             return false;
         }
     }

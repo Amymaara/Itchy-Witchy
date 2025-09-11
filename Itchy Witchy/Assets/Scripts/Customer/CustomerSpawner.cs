@@ -32,22 +32,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnDelay);
         currentCustomer = Instantiate(entry.customerPrefab, spawnPoint.position, Quaternion.identity);
-
-        if (entry.orderFromTarot) // handles when an order comes from a tarot result 
-        {
-            void Handler(ItemSO item)
-            {
-                TarotLinking.instance.onTarotOrderChosen -= Handler;
-                if (currentCustomer) currentCustomer.SetOrder(item); // links to my set order function in customer
-            }
-            TarotLinking.instance.onTarotOrderChosen += Handler; 
-        }
-
-        else
-        {
-            currentCustomer.SetOrder(entry.fixedOrder); // manually set order (turorial usage)
-        }
-
+        currentCustomer.SetOrder(entry.order); //tells the customer what their order is
         currentCustomer.OnServedCorrectly += HandleCustomerServed;
     }
 
