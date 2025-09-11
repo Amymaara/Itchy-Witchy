@@ -1,16 +1,11 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PotionMixBehaviour : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject Button;
+    public void OnEnable()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        EventSystem.current.SetSelectedGameObject(Button);
     }
 }

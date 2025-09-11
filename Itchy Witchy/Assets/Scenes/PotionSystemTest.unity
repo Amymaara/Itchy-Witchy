@@ -34546,6 +34546,7 @@ MonoBehaviour:
   finishedProduct: 0
   station: 1
   material: 3
+  recipe: 0
   fillColour: {r: 1, g: 0.3830188, b: 0.3830188, a: 1}
 --- !u!23 &631336968
 MeshRenderer:
@@ -35711,7 +35712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 15, y: 532}
+  m_AnchoredPosition: {x: 15, y: 522}
   m_SizeDelta: {x: 0, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730685990
@@ -41718,6 +41719,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c3fc5549-1692-4a83-a78b-b46f06eea467
     m_ActionName: Runes/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 439f7e25-f7f1-4182-a511-3bee509bf37f
+    m_ActionName: Potions/Left
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a04a4548-2899-431e-8e95-8adae9dee166
+    m_ActionName: Potions/Right
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5f350bea-d423-4235-9c1d-bb6a521a89e7
+    m_ActionName: Potions/Up
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 011e2ca7-7d13-4234-b907-20e436d0f7c0
+    m_ActionName: Potions/Down
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -57962,6 +57979,7 @@ MonoBehaviour:
   finishedProduct: 0
   station: 1
   material: 1
+  recipe: 0
   fillColour: {r: 0.6615476, g: 0.9169811, b: 0.56576, a: 1}
 --- !u!23 &1515346642
 MeshRenderer:
@@ -65231,7 +65249,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.554717, g: 0.5515771, b: 0.5515771, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -70829,6 +70847,7 @@ MonoBehaviour:
   finishedProduct: 0
   station: 1
   material: 2
+  recipe: 0
   fillColour: {r: 0.44596118, g: 0.3794731, b: 0.8415094, a: 1}
 --- !u!23 &1672869086
 MeshRenderer:
@@ -70998,6 +71017,7 @@ MonoBehaviour:
   finishedProduct: 0
   station: 1
   material: 0
+  recipe: 0
   fillColour: {r: 1, g: 0.47358483, b: 0.8720869, a: 1}
 --- !u!23 &1679082135
 MeshRenderer:
@@ -72026,6 +72046,7 @@ MonoBehaviour:
   fillContainer: {fileID: 730685989}
   fillSectionPrefab: {fileID: 1964000836725908145, guid: 394264159d74e1b4caef1b4fa3000cd9, type: 3}
   maxFillHeight: 1000
+  PotionBarCanvas: {fileID: 1326117078}
   holding: {fileID: 0}
   ingredient: {fileID: 0}
   fpcontroller: {fileID: 922715179}
@@ -79956,7 +79977,7 @@ RectTransform:
   m_GameObject: {fileID: 2067968261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
+  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 730685989}
@@ -79964,8 +79985,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99.5, y: 26.6}
-  m_SizeDelta: {x: 246, y: 1070}
+  m_AnchoredPosition: {x: -100.2, y: 15.2}
+  m_SizeDelta: {x: 246, y: 1050}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067968263
 MonoBehaviour:
@@ -80336,6 +80357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2090665870}
+  - component: {fileID: 2090665871}
   m_Layer: 0
   m_Name: PotionMiniGame
   m_TagString: Untagged
@@ -80360,6 +80382,19 @@ Transform:
   - {fileID: 1744074948}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2090665871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090665869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6606f74ef0cf3d74db8fca11dbffdb32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button: {fileID: 1573876351}
 --- !u!1 &2092745326
 GameObject:
   m_ObjectHideFlags: 0

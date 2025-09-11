@@ -26,6 +26,7 @@ public class InputManager : MonoBehaviour
         potionMix.SetActive(false);
         cursor.SetActive(false);
         player.SetActive(true);
+        player.GetComponent<Renderer>().enabled = true;
         player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
         manager.SwitchToPlayerCam();
     }
@@ -50,8 +51,8 @@ public class InputManager : MonoBehaviour
     {
         potionMix.SetActive(true);
         manager.SwitchToPotionCam();
-     
-        //player.GetComponent<PlayerInput>().SwitchCurrentActionMap("UI"); //make a potion input manager
+        player.GetComponent<Renderer>().enabled = false;
+        player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Potions"); //make a potion input manager
 
 
     }
