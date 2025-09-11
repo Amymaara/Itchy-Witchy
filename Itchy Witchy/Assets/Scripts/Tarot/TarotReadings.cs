@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// can create a reading by grouping the 3 card types together
 [CreateAssetMenu(fileName = "NewTarotReadings", menuName = "Tarot/Readings")]
 public class TarotReadings : ScriptableObject
 {

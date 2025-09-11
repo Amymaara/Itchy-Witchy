@@ -7,6 +7,7 @@ public enum TarotCardType
     ReasonWhy
 }
 
+// can create individual cards
 [CreateAssetMenu(fileName = "NewCard", menuName = "Tarot/Card")]
 public class TarotCards : ScriptableObject
 {

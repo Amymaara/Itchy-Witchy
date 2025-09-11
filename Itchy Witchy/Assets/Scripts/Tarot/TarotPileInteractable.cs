@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class TarotPileInteractable : MonoBehaviour, IInteractable
 {
     public TarotManager tarotManager;
@@ -8,8 +9,7 @@ public class TarotPileInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        tarotManager.OpenTarotSpread();
-
+        tarotManager.OpenTarotSpread(customerReading);
         PlayerInput.SwitchCurrentActionMap("Tarot");
     }
 }

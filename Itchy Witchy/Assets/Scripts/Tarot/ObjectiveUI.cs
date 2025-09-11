@@ -12,6 +12,7 @@ public class ObjectiveUI : MonoBehaviour
         objectiveCardUI.SetActive(false);
     }
 
+    // adds item name to orderUI
     public void SetObjective(string itemID)
     {
         if(itemText != null)
@@ -24,5 +25,10 @@ public class ObjectiveUI : MonoBehaviour
     public void ShowObjectiveCard()
     {
         objectiveCardUI.SetActive(true);
+    }
+
+    public void HideObjectiveCard()
+    {
+        objectiveCardUI.SetActive(false);
     }
 }
