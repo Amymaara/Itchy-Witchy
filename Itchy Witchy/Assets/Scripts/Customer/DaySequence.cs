@@ -4,10 +4,11 @@ using UnityEngine;
 public class DaySequence : ScriptableObject
 {
     [System.Serializable]
-    public struct Entry
+    public struct Entry //SO queue for how customers appear in order
     {
         public Customer customerPrefab;
-        public ItemSO order;
+        public bool orderFromTarot; // daily play usage
+        public ItemSO fixedOrder; // tutorial usage
     }
 
     public string dayName = "Day X";
