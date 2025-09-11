@@ -14,12 +14,7 @@ public class InteractableObject : MonoBehaviour
         Cat
     }
 
-    public enum Recipe
-    {
-        None, 
-        Knowledge,
-        Love
-    }
+   
     public Station station;
     
     
